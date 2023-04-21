@@ -4,20 +4,24 @@ trait Database{
     private function connect ()
     {
         $string = "mysql:host=".DBHOST.";dbname=".DBNAME;
-        $con = new PDO($string, DBUSER, DBPASS);
-        return $con;
+        $database = new PDO($string, DBUSER, DBPASS);
+        return $database;
     }
 
-    public function query($query, $data = []){
-        $con = $this->connect();
-        $stm = $con->prepare($query);
-        $check = $stm -> execute($data);
+    public function query(string $query, $data = []){
+        $database = $this->connect();
+        $preparedQuery = $database->prepare($query);
+        $check = $preparedQuery->execute($data);
         if($check){
-            $result = $stm->fetchAll(PDO::FETCH_OBJ);
-            if(is_array(($result)) && count($result)){
+            return $preparedQuery->fetchAll();
+            /*
+            $result = $preparedQuery->fetchAll();
+            if($result){
                 return $result;
             }
-        }else{
+            else return false;
+            */
+        }else{ //échec de la requête
             return false;
         }     
     }

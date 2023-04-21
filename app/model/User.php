@@ -2,16 +2,122 @@
 
 class User {
     use Model;
-    protected $table = "users";
+    protected $table = "Utilisateur";
+    /*
     protected $allowedColums = [
-        'email',
+        'login',
         'password',
-    ];
+    ];*/
 
+    public function getMdpHash($login) {
+        $data['login'] = $login;
+        $user = $this->select($data);
+        if($user) {
+            return $user['mdpHash'];
+        }
+        return 0; //échec
+    }
 
+    public function getUtilisateur($login) {
+        $data['login'] = $login;
+        $user = $this->select($data);
+        if($user) {
+            return $user;
+        }
+        return 0;
+    }
+
+    public function loginDisponible($login) {
+        $data['login'] = $login;
+        $user = $this->select($data);
+        if($user) {
+            return 0;
+        }
+        return 1;
+    }
+
+    public function ajoutUtilisateur($login, $mdpHash) {
+        if($this->loginDisponible($login)) {
+            $data['login'] = $login;
+            $data['mdpHash'] = $mdpHash;
+            ;
+            if(is_array($this->insert($data))) {
+                return 1;
+            }
+        }
+        return 0; //login non dispo ou erreur lors de l'ajout
+    }
+
+    public function modifierLoginUtilisateur($login, $nouveauLogin) {
+        if($this->loginDisponible($nouveauLogin)) {
+            $data['login'] = $nouveauLogin;
+            if(is_array($this->update($login, $data, 'login'))) {
+                return 1;
+            }
+        }
+        return 0;//erreur
+    }
+
+    public function modifierMdpUtilisateur($login, $mdpHash) {
+        $data['mdpHash'] = $mdpHash;
+        if(is_array($this->update($login, $data, 'login'))) {
+            return 1;
+        }
+        return 0;//erreur
+    }
+
+    public function modifierNomUtilisateur($login, $nom) {
+        $data['nom'] = $nom;
+        if(is_array($this->update($login, $data, 'login'))) {
+            return 1;
+        }
+        return 0;//erreur
+    }
+
+    public function modifierPrenomUtilisateur($login, $prenom) {
+        $data['prenom'] = $prenom;
+        if(is_array($this->update($login, $data, 'login'))) {
+            return 1;
+        }
+        return 0;//erreur
+    }
+
+    public function modifierEmailUtilisateur($login, $email) {
+        $data['email'] = $email;
+        if(is_array($this->update($login, $data, 'login'))) {
+            return 1;
+        }
+        return 0;//erreur
+    }
+/*
+    public function modifierUtilisateur($login, $nouveauLogin, $mdpHash, $nom, $prenom, $email) {
+        $data['login'] = $login;
+        $data['mdpHash'] = $mdpHash;
+        $data['nom'] = $nom;
+        $data['prenom'] = $prenom;
+        $data['email'] = $email;
+    }
+*/
+    public function supprimerUtilisateur($login) {
+        if(is_array($this->delete($login, 'login'))) {
+            return 1;
+        }
+        return 0;//erreur
+    }
+
+    public function setAdmin($login, $value) { //value : 0 pour false, 1 pour true
+        $data['admin'] = $value;
+        if(is_array($this->update($login, $data, 'login'))) {
+            return 1;
+        }
+        return 0;//erreur
+    }
+
+/*
     public function validate($data){
         $this->errors = [];
 
+        //pas ici ces vérifs mais dans controleur
         if(empty($data['email'])){
             $this->errors['email'] = "Email is required";
         }else
@@ -25,5 +131,5 @@ class User {
             return true;
         }
         return false;
-    }
+    }*/
 }
