@@ -3,10 +3,10 @@
 //define("ROOT", "https://www.DAW-project.com");
 define("ROOT", "http://localhost/projetDAW/public");
 
-define("DBNAME","mvc");
+define("DBNAME","databaseDAW");
 define("DBHOST","localhost");
 define("DBUSER","root");
 define("DBPASS","");
 
-define("APP_NAME","projectDAW");
+define("APP_NAME","projetDAW");
 
