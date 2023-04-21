@@ -7,16 +7,15 @@ class Login
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $user = new User;
 
-            $arr['email'] = $_POST['email'];
-            $row = $user->first($arr);
-            
-            if($row){
-                if($row->password === $_POST['password']){
-                    $_SESSION['EMAIL'] = $_POST['email'];
+            $login = $_POST['login'];
+            $mdp = $user->getMdpHash($login);
+            if($mdp) {
+                if($mdp == $_POST['mdpHash']){ //en réalité il faudra haché le mdp
+                    //$_SESSION['EMAIL'] = $_POST['email'];
                     redirect('home');
                 }
             }
-            $user-> errors[] = "Invalid email or password";
+            $user-> errors[] = "Invalid login or password";
             $data['errors'] = $user->errors; 
         }
         

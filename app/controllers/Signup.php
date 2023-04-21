@@ -6,11 +6,13 @@ class Signup
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $user = new User;
-            if($user->validate($_POST)){
-                $user->insert($_POST);
-                redirect('login');
+            $login = $_POST['login'];
+            $mdp = $_POST['password']; //en réalité il faudra haché le mdp
+            if($user->ajoutUtilisateur($login, $mdp)) {
+                redirect('home');
             }
-            $data['errors'] = $user->errors;
+            $user-> errors[] = "Login non disponible";
+            $data['errors'] = $user->errors; 
         }
         
 
