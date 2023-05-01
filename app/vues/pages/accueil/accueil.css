@@ -1,0 +1,23 @@
+/*on reset tout*/
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+html, body{
+    height: 100%;
+}
+
+body{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/************** Main **************/
+main{
+    background-color: #fff;
+    flex-grow: 1;
+}
