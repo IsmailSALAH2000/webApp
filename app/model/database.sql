@@ -15,7 +15,7 @@ CREATE TABLE Utilisateur (
     mdpHash varchar(128) NOT NULL,
     nom varchar(128),
     prenom varchar(128),
-    email varchar(128),
+    email varchar(128) UNIQUE,
     admin boolean NOT NULL
 );
 
