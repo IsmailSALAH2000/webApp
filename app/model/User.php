@@ -27,6 +27,15 @@ class User {
         return 0;
     }
 
+    public function getUserByMail($email) {
+        $data['email'] = $email;
+        $user = $this->select($data);
+        if($user) {
+            return $user;
+        }
+        return 0;
+    }
+
     public function loginDisponible($login) {
         $data['login'] = $login;
         $user = $this->select($data);
@@ -40,7 +49,6 @@ class User {
         if($this->loginDisponible($login)) {
             $data['login'] = $login;
             $data['mdpHash'] = $mdpHash;
-            ;
             if(is_array($this->insert($data))) {
                 return 1;
             }
