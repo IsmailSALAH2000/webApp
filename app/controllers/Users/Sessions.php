@@ -4,12 +4,13 @@ session_start();
 
 class Session
 {
-    public static function Create($login, $firstName, $lastName, $mail)
+    public static function Create($login, $firstName, $lastName, $mail, $isAdmin)
     {
         $_SESSION['login'] = $login
         $_SESSION['firstName'] = $firstName;
         $_SESSION['lastName'] = $lastName;
         $_SESSION['mail'] = $mail;
+        $_SESSION['isAdmin'] = $isAdmin;
     }
 
     public static function Exists()
@@ -39,6 +40,12 @@ class Session
     {
         if(!Exists()) throw new Exception('Aucune session en cours. Impossible de récupérer le mail : session non créée.')
         else return $_SESSION['mail'];
+    }
+
+    public static function IsAdmin()
+    {
+        if(!Exists()) throw new Exception('Aucune session en cours. Impossible de récupérer la variable admin : session non créée.')
+        else return $_SESSION['isAdmin'];
     }
 
     public static function Destroy()

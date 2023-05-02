@@ -24,7 +24,8 @@ class Login
             $userData['login'],
             $userData['prenom'],
             $userData['nom'],
-            $userData['email']
+            $userData['email'],
+            $userData['admin']
         );
 
         ViewsLauncher::LoggedIn();
