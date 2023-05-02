@@ -1,24 +1,32 @@
 <?php
+
+require_once '/app/model/User.php'
+require_once '/app/controllers/Sessions.php'
+require '/app/controllers/ViewsLauncher.php'
+
 class Login 
 {
-    use Controller;
-    public function index($data=[])
+    public static function TryLogin($username, $passwordNotHashed)
     {
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $user = new User;
+        $userInstance = new User();
+        $hashTarget = $userInstance->getMdpHash($username);
 
-            $login = $_POST['login'];
-            $mdp = $user->getMdpHash($login);
-            if($mdp) {
-                if($mdp == $_POST['mdpHash']){ //en réalité il faudra haché le mdp
-                    //$_SESSION['EMAIL'] = $_POST['email'];
-                    redirect('home');
-                }
-            }
-            $user-> errors[] = "Invalid login or password";
-            $data['errors'] = $user->errors; 
+        // Si le hash est invalide (=> l'username n'existe pas) ou si le mot de passe ne correspond pas au mot de passe correspondant à l'username, alors on doit traiter l'erreur.
+        if($hashTarget == 0 || password_hash($passwordNotHashed, PASSWORD_DEFAULT) != $hashTarget)
+        {
+            ViewsLauncher::BadLogin();
+            return;
         }
         
-        $this->view("login",$data);
+        // Sinon, on connecte la personne.
+        $userData = $userInstance->getUtilisateur();
+        Session::CreateSession(
+            $userData['login'],
+            $userData['prenom'],
+            $userData['nom'],
+            $userData['email']
+        );
+
+        ViewsLauncher::LoggedIn();
     }
 }
