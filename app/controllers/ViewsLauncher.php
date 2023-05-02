@@ -19,6 +19,14 @@ class ViewLauncher
     }
 
     /*
+        Erreur 404.
+    */
+    public static function Error404()
+    {
+        OpenView('Error404.php');
+    }
+
+    /*
         Quand l'utilisateur se trompe de nom d'utilisateur/mot de passe.
     */
     public static function BadLogin()
