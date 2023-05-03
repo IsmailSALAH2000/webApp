@@ -4,6 +4,12 @@ require_once '/app/model/QcmModel.php'
 require_once 'QCM.php'
 require_once '/app/controllers/ViewsLauncher.php'
 
+/*
+    Au chargement de la page, on va les fonctions demandées dans la variable POST 'whatToDo', qui représentent des endpoints pour cette page. C'est-à-dire que peu importe le résultat de ces fonctions, une vue sera chargée à leur issue.
+
+    Utilisation : passer les paramètres en POST.
+*/
+
 if(isset($_POST['whatToDo']))
 {
     switch($_POST['whatToDo'])
@@ -12,6 +18,11 @@ if(isset($_POST['whatToDo']))
             if(!isset($_POST['qcm']))
                 throw new Exception('Impossible d\'ajouter un QCM : paramètre POST "qcm" inexistant.');
             QCMController::AddQCM($_POST['qcm']);
+            break;
+        case 'removeQCM':
+            if(!isset($_POST['qcmId']))
+                throw new Exception('Impossible de supprimer un QCM : paramètre POST "qcmId" inexistant.');
+            QCMController::RemoveQCMById($_POST['qcmId']);
             break;
         default:
             break;
