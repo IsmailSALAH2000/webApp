@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS databaseDAW;
-CREATE DATABASE databaseDAW;
+CREATE DATABASE databaseDAW CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
 CREATE TABLE Cours (
     idCours integer AUTO_INCREMENT PRIMARY KEY,
@@ -34,5 +34,5 @@ CREATE TABLE Message (
     contenu text NOT NULL,
     dateMessage DATETIME DEFAULT now(),
     CONSTRAINT fk_idTopic FOREIGN KEY (idTopic) REFERENCES Topic (idTopic) ON DELETE CASCADE,
-    CONSTRAINT fk_idUtilisateur FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur (login) ON DELETE CASCADE
+    CONSTRAINT fk_idUtilisateur2 FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur (login) ON DELETE CASCADE
 );
