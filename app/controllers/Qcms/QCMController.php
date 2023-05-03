@@ -8,6 +8,11 @@ require_once '/app/controllers/ViewsLauncher.php'
     Au chargement de la page, on va les fonctions demandées dans la variable POST 'whatToDo', qui représentent des endpoints pour cette page. C'est-à-dire que peu importe le résultat de ces fonctions, une vue sera chargée à leur issue.
 
     Utilisation : passer les paramètres en POST.
+    'whatToDo' correspond à :
+        - 'addQCM' pour ajouter un QCM. Paramètres supplémentaires obligatoires :
+            - 'qcm', correspond à une instance de la classe QCM.
+        - 'removeQCM' pour supprimer un QCM. Paramètres supplémentaires obligatoires :
+            - 'qcmID', correspond à l'id (~ nom) du QCM à supprimer (string).
 */
 
 if(isset($_POST['whatToDo']))

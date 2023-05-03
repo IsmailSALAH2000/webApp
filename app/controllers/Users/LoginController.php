@@ -8,6 +8,8 @@ require_once '/app/controllers/ViewsLauncher.php'
     Au chargement de la page, on va simplement appeler la fonction TryLogin, qui représente un endpoint pour cette page. C'est-à-dire que peu importe le résultat de TryLogin, une vue sera chargée à son issue.
 
     Utilisation : passer les paramètres en POST.
+    'username' correspond au pseudonyme de l'utilisateur à connecter.
+    'passwordNotHashed' correspond à son mot de passe en clair.
 */
 
 if(isset($_POST['username']) && isset($_POST['passwordNotHashed']))
