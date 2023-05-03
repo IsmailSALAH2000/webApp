@@ -4,6 +4,20 @@ require_once '/app/model/User.php'
 require_once '/app/controllers/Sessions.php'
 require '/app/controllers/ViewsLauncher.php'
 
+/*
+    Au chargement de la page, on va simplement appeler la fonction TryRegister, qui représente un endpoint pour cette page. C'est-à-dire que peu importe le résultat de TryRegister, une vue sera chargée à son issue.
+
+    Utilisation : passer les paramètres en POST.
+*/
+
+Register::TryRegister(
+    $_POST['username'], // Le login/pseudo de l'utilisateur
+    $_POST['passwordNotHashed'], // Le mot de passe en clair de l'utilisateur
+    $_POST['firstName'], // Le prénom de l'utilisateur
+    $_POST['lastName'], // Le nom de famille de l'utilisateur
+    $_POST['mail'] // L'adresse mail de l'utilisateur
+)
+
 class Register 
 {
     public static function TryRegister($username, $passwordNotHashed, $firstName, $lastName, $mail)
