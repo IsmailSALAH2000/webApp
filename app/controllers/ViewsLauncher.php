@@ -57,6 +57,22 @@ class ViewLauncher
     {
         OpenView('homepage.php');
     }
+
+    /*
+        Quand un QCM a été ajouté sur le serveur.
+    */
+    public static function QCMAdded()
+    {
+        OpenView('admin/qcmList.php');
+    }
+
+    /*
+        Quand un QCM a été supprimé du serveur.
+    */
+    public static function QCMRemoved()
+    {
+        OpenView('admin/qcmList.php');
+    }
 }
 
 ?>
