@@ -25,8 +25,7 @@ class Cours {
     }
 
     //ajoute un cours à la base de donnée, retourne 1 si l'ajout est effectué, 0 sinon
-    public function ajoutCours($id, $titre, $description, $type, $chemin) {
-        $data['idCours'] = $id;
+    public function ajoutCours($titre, $description, $type, $chemin) {
         $data['titre'] = $titre;
         $data['description'] = $description;
         $data['type'] = $type;
