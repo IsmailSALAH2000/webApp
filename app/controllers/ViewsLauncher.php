@@ -57,6 +57,14 @@ class ViewLauncher
     {
         OpenView('homepage.php');
     }
+
+    /*
+        Quand un cours a été ajouté avec succès.
+    */
+    public static function LessonAdded()
+    {
+        OpenView('pageCours.php');
+    }
 }
 
 ?>
