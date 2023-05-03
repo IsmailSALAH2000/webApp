@@ -73,6 +73,14 @@ class ViewLauncher
     {
         OpenView('admin/qcmList.php');
     }
+
+    /*
+        Quand un cours a été ajouté avec succès.
+    */
+    public static function LessonAdded()
+    {
+        OpenView('pageCours.php');
+    }
 }
 
 ?>
