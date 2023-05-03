@@ -5,7 +5,7 @@ require_once 'QCM.php'
 require_once '/app/controllers/ViewsLauncher.php'
 
 /*
-    Au chargement de la page, on va les fonctions demandées dans la variable POST 'whatToDo', qui représentent des endpoints pour cette page. C'est-à-dire que peu importe le résultat de ces fonctions, une vue sera chargée à leur issue.
+    Au chargement de la page, on va appeler les fonctions demandées dans la variable POST 'whatToDo', qui représentent des endpoints pour cette page. C'est-à-dire que peu importe le résultat de ces fonctions, une vue sera chargée à leur issue.
 
     Utilisation : passer les paramètres en POST.
     'whatToDo' correspond à :
