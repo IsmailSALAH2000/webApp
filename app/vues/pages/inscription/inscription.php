@@ -29,7 +29,7 @@ include('../../composants/footer/footer.php');
                 <label>Prénom</label>
                 <input type="text" name="prenom" required>
 
-                <label>Prénom</label>
+                <label>Email</label>
                 <input type="email" name="email" required>
 
                 <label>Nom d'utilisateur</label>
