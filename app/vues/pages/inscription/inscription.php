@@ -1,6 +1,6 @@
 <?php
-include('/Applications/MAMP/htdocs/vues/composants/header/header.php');;
-include('/Applications/MAMP/htdocs/vues/composants/footer/footer.php');
+include('../../composants/header/header.php');;
+include('../../composants/footer/footer.php');
 ?>
 
 <!DOCTYPE html>
