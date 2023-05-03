@@ -12,13 +12,13 @@ require_once '/app/controllers/ViewsLauncher.php'
 
 if(isset($_POST['username']) && isset($_POST['passwordNotHashed']))
 {
-    Register::TryRegister(
+    LoginController::TryLogin(
         $_POST['username'], // Le login/pseudo de l'utilisateur
         $_POST['passwordNotHashed'], // Le mot de passe en clair de l'utilisateur
     );
 }
 
-class Login 
+class LoginController
 {
     public static function TryLogin($username, $passwordNotHashed)
     {

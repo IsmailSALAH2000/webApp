@@ -16,7 +16,7 @@ if(isset($_POST['username'])
     && isset($_POST['lastName'])
     && isset($_POST['mail']))
 {
-    Register::TryRegister(
+    RegisterController::TryRegister(
         $_POST['username'], // Le login/pseudo de l'utilisateur
         $_POST['passwordNotHashed'], // Le mot de passe en clair de l'utilisateur
         $_POST['firstName'], // Le prénom de l'utilisateur
@@ -25,7 +25,7 @@ if(isset($_POST['username'])
     );
 }
 
-class Register 
+class RegisterController 
 {
     public static function TryRegister($username, $passwordNotHashed, $firstName, $lastName, $mail)
     {
