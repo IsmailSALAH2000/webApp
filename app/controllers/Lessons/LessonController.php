@@ -100,9 +100,9 @@ class Lessons
     public static function GetLessonById($id)
     {
         $coursInstance = new Cours();
-        $rawLessons = $coursInstance->getCours($id); // Récupération le cours depuis le modèle sous forme brute.
+        $rawLesson = $coursInstance->getCours($id); // Récupération le cours depuis le modèle sous forme brute.
 
-        if($rawLessons == null) return null;
+        if($rawLesson == null) return null;
 
         $lesson = new Lesson(); // On crée une instance de la classe Lesson, permettant une manipulation plus aisée de l'information.
         $lesson->idCours = $rawLesson['idCours'];
@@ -112,7 +112,7 @@ class Lessons
         $lesson->chemin = $rawLesson['chemin'];
         $lesson->dateCours = $rawLesson['dateCours'];
 
-        return $lesosn;
+        return $lesson;
     }
 
 }
