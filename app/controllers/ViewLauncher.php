@@ -81,6 +81,14 @@ class ViewLauncher
     {
         ViewLauncher::OpenView('pageCours.php');
     }
+
+    /*
+        Quand un cours a été supprimé avec succès.
+    */
+    public static function LessonRemoved()
+    {
+        OpenView('pageCours.php');
+    }
 }
 
 ?>
