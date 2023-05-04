@@ -15,6 +15,7 @@ class Forum {
     private $q_supprimeMessage;
     private $q_supprimeTopic;
     private $q_supprimeMessagesTopic;
+    private $q_getTopic;
 
     public function __construct() {
         //require_once('connexion.php');
@@ -30,11 +31,18 @@ class Forum {
         $this->q_supprimeMessage = $this->bdd->prepare('DELETE FROM `Message` WHERE idMessage=:i;');
         $this->q_supprimeTopic = $this->bdd->prepare('DELETE FROM Topic WHERE idTopic=:i;');
         $this->q_supprimeMessagesTopic = $this->bdd->prepare('DELETE FROM `Message` WHERE idTopic=:i;');
+        $this->q_getTopic = $this->bdd->prepare('SELECT * FROM Topic WHERE idTopic=:i;');
     }
 
     public function getAllTopics() {
         $this->q_listeTopics->execute();
         return $this->q_listeTopics->fetchAll();
+    }
+
+    public function getTopic($id) {
+        $this->q_getTopic->bindValue('i', $id, PDO::PARAM_INT);
+        $this->q_getTopic->execute();
+        return $this->q_getTopic->fetchAll();
     }
 
     public function getAllMessages(int $idTopic) {
