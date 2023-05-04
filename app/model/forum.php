@@ -79,6 +79,7 @@ class Forum {
         $res = $this->q_dernierIdTopic->fetchAll();
         $idTopic = $res[0]['MAX(idTopic)'];
         $this->ajoutMessage($idTopic, $idUtilisateur, $contenu);
+        return $idTopic;
     }
 
     public function supprimeMessage(int $idMessage) {
