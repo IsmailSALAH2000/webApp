@@ -22,7 +22,15 @@ if(isset($_POST['username']) && isset($_POST['passwordNotHashed']))
 
 class LoginController
 {
-    public static function TryLogin($username, $passwordNotHashed)
+    /**
+     * Essaie de connecter un utilisateur.
+     * Usage interne uniquement, utiliser des variables POST pour connecter un utilisateur.
+     *
+     * @param [string] $username Le nom d'utilisateur/pseudonyme.
+     * @param [string] $passwordNotHashed Le mot de passe en clair.
+     * @return void
+     */
+    public static function TryLogin(string $username, string $passwordNotHashed)
     {
         $userInstance = new User();
         $hashTarget = $userInstance->getMdpHash($username);

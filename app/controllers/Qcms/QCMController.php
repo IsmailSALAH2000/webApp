@@ -36,10 +36,13 @@ if(isset($_POST['whatToDo']))
 
 class QCMController
 {
-    /*
-        Renvoie un tableau d'instances de QCMHeader. Ce tableau contient tous les id (~ noms) et type de tous les qcm stockés sur le site.
-    */
-    public static function GetAllQCMHeaders()
+
+    /**
+     * Renvoie un tableau d'instances de QCMHeader. Ce tableau contient tous les id (~ noms) et type de tous les qcm stockés sur le site.
+     *
+     * @return array Un tableau d'instances de QCMHeader.
+     */
+    public static function GetAllQCMHeaders() : array
     {
         $qcmModelInstance = new QcmModel();
         $allQCMIds = $qcmModelInstance->getAllQCM();
@@ -59,10 +62,13 @@ class QCMController
         return $out;
     }
     
-    /*
-        Retourne une QCM selon son ID. Retourne null en cas d'id introuvable.
-    */
-    public static function QetQCMById($id)
+    /**
+     * Permet de récupérer un Qcm.
+     *
+     * @param string $id L'id (~ nom) du QCM.
+     * @return Qcm|null Retourne une QCM selon son ID. Retourne null en cas d'id introuvable.
+     */
+    public static function QetQCMById(string $id) : ?Qcm
     {
         $qcmModelInstance = new QcmModel();
         $rawQCM = $qcmModelInstance->getQCM($id); // Récupération du QCM depuis le modèle sous forme brute.
@@ -93,24 +99,24 @@ class QCMController
         return $qcm;
     }
 
-    /*
-        Permet de savoir si un id (~ nom) de QCM est disponible ou non.
-        Retourn true s'il est disponible, faux sinon.
-    */
-    public static function IsQCMIdAvailable($id)
+    /**
+     * Permet de savoir si un id (~ nom) de QCM est disponible ou non.
+     *
+     * @param string $id L'id (~ nom) du qcm.
+     * @return bool Vrai s'il est disponible, faux sinon.
+     */
+    public static function IsQCMIdAvailable(string $id) : bool
     {
         $qcmModelInstance = new QcmModel();
         if ($qcmModelInstance->QCMExiste($id) == 1) return false;
         else return true;
     }
 
-    /*
-        Ajoute un qcm sur le serveur.
-    */
     /**
      * Ajoute un qcm sur le serveur.
-     *
-     * @param [Qcm] $qcm
+     * Usage interne uniquement, utiliser des variables POST pour ajouter un QCM.
+     * 
+     * @param Qcm $qcm Une instance de Qcm.
      * @return void
      */
     public static function AddQCM(Qcm $qcm)
@@ -144,9 +150,10 @@ class QCMController
     }
 
     /**
-     * Supprime un QCM du serveur selon son id (~ nom)
+     * Supprime un QCM du serveur selon son id (~ nom).
+     * Usage interne uniquement, utiliser des variables POST pour supprimer un QCM.
      *
-     * @param string $id
+     * @param string $id L'id (~ nom) du qcm.
      * @return void
      */
     public static function RemoveQCMById(string $id)

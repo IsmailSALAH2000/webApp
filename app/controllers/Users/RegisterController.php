@@ -32,7 +32,18 @@ if(isset($_POST['username'])
 
 class RegisterController 
 {
-    public static function TryRegister($username, $passwordNotHashed, $firstName, $lastName, $mail)
+    /**
+     * Essaie d'inscrire un utilisateur.
+     * Usage interne uniquement, utiliser des variables POST pour inscrire un utilisateur.
+     *
+     * @param string $username Le nom d'utilisateur/pseudonyme.
+     * @param string $passwordNotHashed Le mot de passe en clair.
+     * @param string $firstName Le prénom de l'utilisateur.
+     * @param string $lastName Le nom de famille de l'utilisateur.
+     * @param string $mail L'adresse mail de l'utilisateur.
+     * @return void
+     */
+    public static function TryRegister(string $username, string $passwordNotHashed, string $firstName, string $lastName, string $mail)
     {
         $userInstance = new User();
 
