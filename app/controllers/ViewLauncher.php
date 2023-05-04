@@ -87,7 +87,48 @@ class ViewLauncher
     */
     public static function LessonRemoved()
     {
-        OpenView('pageCours.php');
+        ViewLauncher::OpenView('pageCours.php');
+    }
+    
+    /**
+     * Ouvre la vue du topic après sa création.
+     *
+     * @param integer $id L'id du topic créé.
+     * @return void
+     */
+    public static function TopicCreated(int $id)
+    {
+        ViewLauncher::OpenView('forum/topicview.php?id=' . $id);
+    }
+    
+    /**
+     * Ouvre la vue du topic après la création d'un message.
+     *
+     * @param integer $idTopic L'id du topic du message créé.
+     * @return void
+     */
+    public static function MessageCreated(int $idTopic)
+    {
+        ViewLauncher::OpenView('forum/topicview.php?id=' . $idTopic);
+    }
+
+    /*
+        Quand un topic a été supprimé.
+    */
+    public static function TopicRemoved()
+    {
+        ViewLauncher::OpenView('forum/forum.php');
+    }
+
+    /**
+     * Ouvre la vue adéquate après la suppression d'un message. On précise l'id du topic en question afin de rester sur la page du topic d'où provenait le message supprimé.
+     *
+     * @param integer $idTopic L'id du topic dont le message a été supprimé.
+     * @return void
+     */
+    public static function MessageRemoved(int $idTopic)
+    {
+        ViewLauncher::OpenView('forum/topicview.php?id=' . $idTopic);
     }
 }
 
