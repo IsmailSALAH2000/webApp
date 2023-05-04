@@ -1,8 +1,8 @@
 <?php
 
-require_once 'Lesson.php'
-require_once '/app/controllers/Sessions.php'
-require '/app/controllers/ViewsLauncher.php'
+require_once 'Lesson.php';
+require_once '/app/controllers/Sessions.php';
+require_once '/app/controllers/ViewLauncher.php';
 
 if(isset($_POST['whatToDo']))
 {
@@ -24,7 +24,7 @@ class Lessons
         Ajouter un cours.
         $lesson : instance de la classe Lesson contenant les informations nécessaires à la création du cours.
     */
-    public static AddLesson($lesson)
+    public static function AddLesson($lesson)
     {
         //On verifie si la session existe et si l'utilisateur est admin 
         if(Session::Exists() && Session::IsAdmin())
@@ -35,14 +35,14 @@ class Lessons
         }
         else throw new Exception('Aucune session en cours ou utilisateur non admin'); 
        
-        ViewsLauncher::LessonAdded();
+        ViewLauncher::LessonAdded();
     }
 
     /*
         Retourne tous les cours du type passé en paramètre.
         $type : type des cours à retourner.
     */
-    public static GetAllLessonsOfType($type)
+    public static function GetAllLessonsOfType($type)
     {
         $coursInstance = new Cours();
 

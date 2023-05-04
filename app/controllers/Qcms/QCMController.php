@@ -1,8 +1,8 @@
 <?php
 
-require_once '/app/model/QcmModel.php'
-require_once 'QCM.php'
-require_once '/app/controllers/ViewsLauncher.php'
+require_once '/app/model/QcmModel.php';
+require_once 'QCM.php';
+require_once '/app/controllers/ViewLauncher.php';
 
 /*
     Au chargement de la page, on va appeler les fonctions demandées dans la variable POST 'whatToDo', qui représentent des endpoints pour cette page. C'est-à-dire que peu importe le résultat de ces fonctions, une vue sera chargée à leur issue.
@@ -107,7 +107,13 @@ class QCMController
     /*
         Ajoute un qcm sur le serveur.
     */
-    public static function AddQCM($qcm)
+    /**
+     * Ajoute un qcm sur le serveur.
+     *
+     * @param [Qcm] $qcm
+     * @return void
+     */
+    public static function AddQCM(Qcm $qcm)
     {
         $qcmModelInstance = new QcmModel();
         $dataToSend = array();
@@ -126,7 +132,7 @@ class QCMController
                 $rawChoice['text'] = $answer->label;
                 $rawChoice['correct'] = ($answer->isCorrect ? 'true' : '');
 
-                array_push($rawQuestions['choices'], $rawChoice);
+                array_push($rawQuestion['choices'], $rawChoice);
             }
 
             array_push($dataToSend['questions'], $rawQuestion);
@@ -134,18 +140,21 @@ class QCMController
 
         $qcmModelInstance->ajoutQCM($qcm->header->id, $dataToSend);
 
-        ViewsLauncher::QCMAdded();
+        ViewLauncher::QCMAdded();
     }
 
-    /*
-        Supprime un QCM du serveur selon son id (~ nom);
-    */
-    public static function RemoveQCMById($id)
+    /**
+     * Supprime un QCM du serveur selon son id (~ nom)
+     *
+     * @param string $id
+     * @return void
+     */
+    public static function RemoveQCMById(string $id)
     {
         $qcmModelInstance = new QcmModel();
         $qcmModelInstance->supprimeQCM($id);
 
-        ViewsLauncher::QCMRemoved();
+        ViewLauncher::QCMRemoved();
     }
 }
 

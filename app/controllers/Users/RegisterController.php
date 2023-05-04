@@ -1,8 +1,8 @@
 <?php
 
-require_once '/app/model/User.php'
-require_once '/app/controllers/Sessions.php'
-require_once '/app/controllers/ViewsLauncher.php'
+require_once '/app/model/User.php';
+require_once '/app/controllers/Sessions.php';
+require_once '/app/controllers/ViewLauncher.php';
 
 /*
     Au chargement de la page, on va simplement appeler la fonction TryRegister, qui représente un endpoint pour cette page. C'est-à-dire que peu importe le résultat de TryRegister, une vue sera chargée à son issue.
@@ -39,46 +39,46 @@ class RegisterController
         // On vérifie si le login n'est pas déjà pris
         if(!$userInstance->loginDisponible($username))
         {
-            ViewsLauncher::BadRegister(RegisterErrorReason::LoginAlreadyUsed);
+            ViewLauncher::BadRegister(RegisterErrorReason::LoginAlreadyUsed);
             return;
         }
         
         // Traitement du mot de passe (doit être suffisamment fort)
         if(strlen($passwordNotHashed) < 5)
         {
-            ViewsLauncher::BadRegister(RegisterErrorReason::PasswordNotStrongEnough);
+            ViewLauncher::BadRegister(RegisterErrorReason::PasswordNotStrongEnough);
             return;
         }
 
         // Encryption du mot de passe
         $hash = password_hash($passwordNotHashed, PASSWORD_DEFAULT);
 
-        if(!$userInstance->ajoutUtilisateur($username, $hash))
+        if(!$userInstance->ajoutUtilisateur($username, $hash, $mail))
         {
-            ViewsLauncher::BadRegister(RegisterErrorReason::UnknownReason);
+            ViewLauncher::BadRegister(RegisterErrorReason::UnknownError);
             return;
         }
         
-        if(!$userData->modifierPrenomUtilisateur($username, $firstName))
+        if(!$userInstance->modifierPrenomUtilisateur($username, $firstName))
         {
-            ViewsLauncher::BadRegister(RegisterErrorReason::UnknownReason);
+            ViewLauncher::BadRegister(RegisterErrorReason::UnknownError);
             return;
         }
         
-        if(!$userData->modifierNomUtilisateur($username, $lastName))
+        if(!$userInstance->modifierNomUtilisateur($username, $lastName))
         {
-            ViewsLauncher::BadRegister(RegisterErrorReason::UnknownReason);
+            ViewLauncher::BadRegister(RegisterErrorReason::UnknownError);
             return;
         }
         
-        if(!$userData->modifierEmailUtilisateur($username, $mail))
+        if(!$userInstance->modifierEmailUtilisateur($username, $mail))
         {
-            ViewsLauncher::BadRegister(RegisterErrorReason::UnknownReason);
+            ViewLauncher::BadRegister(RegisterErrorReason::UnknownError);
             return;
         }
         
-        $userData = $userInstance->getUtilisateur();
-        Session::CreateSession(
+        $userData = $userInstance->getUtilisateur($username);
+        Session::Create(
             $userData['login'],
             $userData['prenom'],
             $userData['nom'],
@@ -86,6 +86,6 @@ class RegisterController
             $userData['admin']
         );
 
-        ViewsLauncher::Registered();
+        ViewLauncher::Registered();
     }
 }

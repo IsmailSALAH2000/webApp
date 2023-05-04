@@ -23,7 +23,7 @@ class ViewLauncher
     */
     public static function Error404()
     {
-        OpenView('Error404.php');
+        ViewLauncher::OpenView('Error404.php');
     }
 
     /*
@@ -31,7 +31,7 @@ class ViewLauncher
     */
     public static function BadLogin()
     {
-        OpenView('connexion.php');
+        ViewLauncher::OpenView('connexion.php');
     }
 
     /*
@@ -39,7 +39,7 @@ class ViewLauncher
     */
     public static function LoggedIn()
     {
-        OpenView('homepage.php');
+        ViewLauncher::OpenView('homepage.php');
     }
 
     /*
@@ -47,7 +47,7 @@ class ViewLauncher
     */
     public static function BadRegister(RegisterErrorReason $reason)
     {
-        OpenView('inscription.php');
+        ViewLauncher::OpenView('inscription.php');
     }
 
     /*
@@ -55,7 +55,7 @@ class ViewLauncher
     */
     public static function Registered()
     {
-        OpenView('homepage.php');
+        ViewLauncher::OpenView('homepage.php');
     }
 
     /*
@@ -63,7 +63,7 @@ class ViewLauncher
     */
     public static function QCMAdded()
     {
-        OpenView('admin/qcmList.php');
+        ViewLauncher::OpenView('admin/qcmList.php');
     }
 
     /*
@@ -71,7 +71,7 @@ class ViewLauncher
     */
     public static function QCMRemoved()
     {
-        OpenView('admin/qcmList.php');
+        ViewLauncher::OpenView('admin/qcmList.php');
     }
 
     /*
@@ -79,7 +79,7 @@ class ViewLauncher
     */
     public static function LessonAdded()
     {
-        OpenView('pageCours.php');
+        ViewLauncher::OpenView('pageCours.php');
     }
 }
 
