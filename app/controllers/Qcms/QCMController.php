@@ -1,7 +1,7 @@
 <?php
 
 require_once '/app/model/QcmModel.php';
-require_once 'QCM.php';
+require_once 'QCMDataStructures.php';
 require_once '/app/controllers/ViewLauncher.php';
 
 /*
