@@ -98,5 +98,6 @@ class RegisterController
         );
 
         ViewLauncher::Registered();
+        return;
     }
 }

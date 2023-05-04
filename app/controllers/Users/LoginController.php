@@ -26,8 +26,8 @@ class LoginController
      * Essaie de connecter un utilisateur.
      * Usage interne uniquement, utiliser des variables POST pour connecter un utilisateur.
      *
-     * @param [string] $username Le nom d'utilisateur/pseudonyme.
-     * @param [string] $passwordNotHashed Le mot de passe en clair.
+     * @param string $username Le nom d'utilisateur/pseudonyme.
+     * @param string $passwordNotHashed Le mot de passe en clair.
      * @return void
      */
     public static function TryLogin(string $username, string $passwordNotHashed)
@@ -53,5 +53,6 @@ class LoginController
         );
 
         ViewLauncher::LoggedIn();
+        return;
     }
 }
