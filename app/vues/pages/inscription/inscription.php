@@ -7,7 +7,7 @@ include('../../composants/footer/footer.php');
 <html lang="fr">
 
     <head>
-        <?php head('Inscription', '/vues/pages/inscription/inscription.css');?>
+        <?php head('Inscription', '../../pages/inscription/inscription.css');?>
     </head>
 
     <body>
@@ -39,7 +39,7 @@ include('../../composants/footer/footer.php');
                 <input type="password" name="motDePasse" required>
 
                 <button type="submit">Inscription</button>
-                <p>Déjà inscrit ? Connectez-vous <a href="/vues/pages/connexion/connexion.php">ici</a> .</p>
+                <p>Déjà inscrit ? Connectez-vous <a href="../../pages/connexion/connexion.php">ici</a> .</p>
             </form>
             
         </main>
