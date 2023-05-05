@@ -1,6 +1,7 @@
 <?php
 include('../../composants/header/header.php');
 include('../../composants/footer/footer.php');
+include('../../../controllers/Users/Sessions.php');
 ?>
 
 <!DOCTYPE html>
@@ -12,21 +13,23 @@ include('../../composants/footer/footer.php');
 
     <body>
         <header>
-            <?php navBar(false); ?>
+            <?php 
+            $isLogged = Session::Exists();
+            navBar($isLogged); ?>
         </header>
 
         <main>
-            <form action="verifConnexion a creer par le controleur.php" method="post">
+            <form method="post">
                 <h2>CONNECTEZ-VOUS</h2>
 <!-- 
                <?php //if (isset($_GET['error'])) { ?>
      		        <p class="error"> <?php //echo $_GET['error']; ?></p>
                 <?php //} ?>-->
                 <label>Nom d'utilisateur :</label>
-                <input type="text" name="nomUtilisateur" required>
+                <input type="text" name="username" required>
                 
                 <label>Mot de passe :</label>
-                <input type="password" name="motDePasse" required>
+                <input type="password" name="passwordNotHashed" required>
 
                 <button type="submit">Connexion</button>
                 <p>Pas encore inscrit ? Inscrivez-vous <a href="../inscription/inscription.php">ici</a> .</p>
