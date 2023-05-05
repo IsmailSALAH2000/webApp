@@ -23,12 +23,12 @@ if(isset($_POST['whatToDo']))
         case 'addLesson':
             if(!isset($_POST['lesson']))
                 throw new Exception('Impossible d\'ajouter une lesson : paramètre POST "lesson" inexistant.');
-            Lessons::AddLEsson($_POST['lesson']);
+            LessonController::AddLEsson($_POST['lesson']);
             break;
         case 'removeLesson' :
             if(!isset($_POST['lessonId']))
                 throw new Exception('Impossible de supprimer une lesson : paramètre POST "lessonId" inexistant.');
-            Lessons::RemoveLessonById($_POST['lessonId']);
+            LessonController::RemoveLessonById($_POST['lessonId']);
         default:
             break;
     }
@@ -40,7 +40,7 @@ class LessonController
         Ajouter un cours.
         $lesson : instance de la classe Lesson contenant les informations nécessaires à la création du cours.
     */
-    public static function AddLesson($lesson)
+    public static function AddLesson(Lesson $lesson)
     {
         //On verifie si la session existe et si l'utilisateur est admin 
         if(Session::Exists() && Session::IsAdmin())
@@ -57,19 +57,19 @@ class LessonController
     /*
         Supprime un cours du serveur selon son id;
     */
-    public static function RemoveLessonById($id)
+    public static function RemoveLessonById(int $id)
     {
         $coursInstance = new Cours();
         $coursInstance->supprimerCours($id);
 
-        ViewsLauncher::LessonRemoved();
+        ViewLauncher::LessonRemoved();
     }
 
     /*
         Retourne tous les cours du type passé en paramètre.
         $type : type des cours à retourner.
     */
-    public static function GetAllLessonsOfType($type)
+    public static function GetAllLessonsOfType(string $type) : array
     {
         $coursInstance = new Cours();
 
@@ -97,7 +97,7 @@ class LessonController
     /*
         Retourne un cours selon son ID. Retourne null en cas d'id introuvable.
     */
-    public static function GetLessonById($id)
+    public static function GetLessonById(int $id) : ?Lesson
     {
         $coursInstance = new Cours();
         $rawLesson = $coursInstance->getCours($id); // Récupération le cours depuis le modèle sous forme brute.
