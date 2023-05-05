@@ -1,5 +1,5 @@
 <?php
-include('../../composants/header/header.php');;
+include('../../composants/header/header.php');
 include('../../composants/footer/footer.php');
 ?>
 
@@ -7,7 +7,7 @@ include('../../composants/footer/footer.php');
 <html lang="fr">
 
     <head>
-        <?php head('Connexion', '/vues/pages/connexion/connexion.css');?>
+        <?php head('Connexion', '../../pages/connexion/connexion.css');?>
     </head>
 
     <body>
@@ -29,7 +29,7 @@ include('../../composants/footer/footer.php');
                 <input type="password" name="motDePasse" required>
 
                 <button type="submit">Connexion</button>
-                <p>Pas encore inscrit ? Inscrivez-vous <a href="/vues/pages/inscription/inscription.php">ici</a> .</p>
+                <p>Pas encore inscrit ? Inscrivez-vous <a href="../inscription/inscription.php">ici</a> .</p>
             </form>
             
         </main>
