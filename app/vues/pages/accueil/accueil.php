@@ -7,7 +7,7 @@ include('../../composants/footer/footer.php');
 <html lang="fr">
 
     <head>
-        <?php head('Acceuil', '/vues/pages/accueil/accueil.css');?>
+        <?php head('Acceuil', '../../pages/accueil/accueil.css');?>
     </head>
 
     <body>
