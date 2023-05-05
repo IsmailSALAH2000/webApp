@@ -1,8 +1,8 @@
 <?php
 
-require_once '/app/model/User.php';
-require_once '/app/controllers/Sessions.php';
-require_once '/app/controllers/ViewLauncher.php';
+require_once __DIR__ . '/../../model/User.php';
+require_once __DIR__ . '/Sessions.php';
+require_once __DIR__ . '/../ViewLauncher.php';
 
 /*
     Au chargement de la page, on va simplement appeler la fonction TryRegister, qui représente un endpoint pour cette page. C'est-à-dire que peu importe le résultat de TryRegister, une vue sera chargée à son issue.

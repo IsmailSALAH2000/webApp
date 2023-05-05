@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/Model.php';
+
 class User {
     use Model;
     protected $table = "Utilisateur";

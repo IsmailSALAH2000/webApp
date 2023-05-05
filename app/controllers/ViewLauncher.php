@@ -31,7 +31,7 @@ class ViewLauncher
     */
     public static function BadLogin()
     {
-        ViewLauncher::OpenView('connexion.php');
+        //ViewLauncher::OpenView('connexion.php');
     }
 
     /*
