@@ -15,7 +15,7 @@ class ViewLauncher
     */
     public static function OpenView($name)
     {
-        header('location:/app/view/' . $name);
+        header('location:/app/vues/' . $name);
     }
 
     /*
@@ -31,7 +31,7 @@ class ViewLauncher
     */
     public static function BadLogin()
     {
-        //ViewLauncher::OpenView('connexion.php');
+        ViewLauncher::OpenView('pages/connexion/connexion.php');
     }
 
     /*
@@ -39,7 +39,7 @@ class ViewLauncher
     */
     public static function LoggedIn()
     {
-        ViewLauncher::OpenView('homepage.php');
+        ViewLauncher::OpenView('pages/accueil/accueil.php');
     }
 
     /*
@@ -47,7 +47,7 @@ class ViewLauncher
     */
     public static function BadRegister(RegisterErrorReason $reason)
     {
-        ViewLauncher::OpenView('inscription.php');
+        ViewLauncher::OpenView('pages/inscription/inscription.php');
     }
 
     /*
@@ -55,7 +55,7 @@ class ViewLauncher
     */
     public static function Registered()
     {
-        ViewLauncher::OpenView('homepage.php');
+        ViewLauncher::OpenView('pages/accueil/accueil.php');
     }
 
     /*
