@@ -1,18 +1,21 @@
 <?php
-include('../../composants/header/header.php');;
+include('../../composants/header/header.php');
 include('../../composants/footer/footer.php');
+include('../../../controllers/Users/Sessions.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 
     <head>
-        <?php head('Acceuil', '../../pages/accueil/accueil.css');?>
+        <?php head('Accueil', '../../pages/accueil/accueil.css');?>
     </head>
 
     <body>
         <header>
-            <?php navBar(false); ?>
+            <?php 
+            $isLogged = Session::Exists();
+            navBar($isLogged); ?>
         </header>
 
         <main>
