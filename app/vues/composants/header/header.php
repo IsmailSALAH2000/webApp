@@ -1,4 +1,5 @@
 <?php
+//include('../../../controllers/Users/Sessions.php');
 
 function head($titrePage, $lienStylePage){
     $titrePage = htmlspecialchars($titrePage);
@@ -28,11 +29,12 @@ function navBar($c){
             return $html;
         }
         else{
+            $user = Session::GetLogin();
             $html=<<<HTML
                 <li><a href="../../pages/cours/cours.php">COURS</a></li>
                 <li><a href="../../pages/qcm/qcm.php">QCM</a></li>
                 <li><a href="../../pages/forum/forum.php">FORUM</a></li>
-                <li><a href="#" class="btnConnection">USER ID</a></li>
+                <li><a href="#" class="btnConnection"></a>$user</li>
                 <!-- <ul class="menuConnection">
                     <li><a href="#" class="choixMenu">Paramètres</a></li>
                     <li><a href="#" class="choixMenu">Déconnexion</a></li>
