@@ -34,7 +34,7 @@ if(isset($_POST['whatToDo']))
     }
 }
 
-class Lessons
+class LessonController
 {
     /*
         Ajouter un cours.
