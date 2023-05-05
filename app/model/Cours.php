@@ -17,7 +17,7 @@ class Cours {
     //retourne tous les cours de type $type, 0 s'il n'en existe pas
     public function getCoursByType($type) {
         $data['type'] = $type;
-        $cours = $this->select($data);
+        $cours = $this->selectAll($data);
         if($cours) {
             return $cours;
         }
