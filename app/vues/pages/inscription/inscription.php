@@ -1,6 +1,7 @@
 <?php
 include('../../composants/header/header.php');;
 include('../../composants/footer/footer.php');
+include('../../../controllers/Users/RegisterController.php');
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +17,7 @@ include('../../composants/footer/footer.php');
         </header>
 
         <main>
-            <form action="verifConnexion a creer par le controleur.php" method="post">
+            <form method="post">
                 <h2>INSCRIVEZ-VOUS</h2>
 <!-- 
                <?php //if (isset($_GET['error'])) { ?>
@@ -24,19 +25,19 @@ include('../../composants/footer/footer.php');
                 <?php //} ?>-->
 
                 <label>Nom</label>
-                <input type="text" name="nom" required>
+                <input type="text" name="lastName" required>
 
                 <label>Prénom</label>
-                <input type="text" name="prenom" required>
+                <input type="text" name="firstName" required>
 
                 <label>Email</label>
-                <input type="email" name="email" required>
+                <input type="email" name="mail" required>
 
                 <label>Nom d'utilisateur</label>
-                <input type="text" name="nomUtilisateur" required>
+                <input type="text" name="username" required>
                 
                 <label>Mot de passe</label>
-                <input type="password" name="motDePasse" required>
+                <input type="password" name="passwordNotHashed" required>
 
                 <button type="submit">Inscription</button>
                 <p>Déjà inscrit ? Connectez-vous <a href="../../pages/connexion/connexion.php">ici</a> .</p>
