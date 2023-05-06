@@ -105,7 +105,8 @@ class ForumController
 
         $topic->header->id = $rawTopic['idTopic'];
         $topic->header->title = $rawTopic['titre'];
-        $topic->header->creator = $userInstance->getUtilisateur($rawTopic['idUtilisateur']);
+        $rawUser = $userInstance->getUtilisateur($rawTopic['idUtilisateur']);
+        $topic->header->creator = $rawUser['prenom'] . ' ' . $rawUser['nom'];
         $topic->header->answersNumber = $rawTopic['nbReponses'];
 
         $rawMessages = $forumInstance->getAllMessages($rawTopic['idTopic']);

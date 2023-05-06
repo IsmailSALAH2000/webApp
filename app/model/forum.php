@@ -44,7 +44,7 @@ class Forum {
     public function getTopic($id) {
         $this->q_getTopic->bindValue('i', $id, PDO::PARAM_INT);
         $this->q_getTopic->execute();
-        return $this->q_getTopic->fetchAll();
+        return $this->q_getTopic->fetchAll()[0];
     }
 
     public function getAllMessages(int $idTopic) {
