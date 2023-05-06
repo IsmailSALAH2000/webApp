@@ -6,6 +6,8 @@ if(!isset($_GET['id'])) ViewLauncher::Error404();
 
 $fullTopic = ForumController::GetFullTopic($_GET['id']);
 
+if($fullTopic == null) ViewLauncher::Error404();
+
 echo "<h1>" . $fullTopic->header->title . "</h1>";
 echo "<h2>Par " . $fullTopic->header->creator . "</h2>";
 

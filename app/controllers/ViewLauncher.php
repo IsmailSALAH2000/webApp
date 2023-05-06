@@ -15,7 +15,7 @@ class ViewLauncher
     */
     public static function OpenView($name)
     {
-        header('location:/app/vues/' . $name);
+        header('location:' . __DIR__ . '/../vues/' . $name);
     }
 
     /*

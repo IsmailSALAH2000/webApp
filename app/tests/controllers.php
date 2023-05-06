@@ -38,6 +38,10 @@ $lesson->type = 'Mathématiques';
 
 LessonController::AddLesson($lesson);
 
+*/
+
+/*
+
 $coursProg = LessonController::GetAllLessonsOfType('Programmation');
 
 echo "<h1>Programmation</h1>";
@@ -141,7 +145,7 @@ foreach($headers as $h)
 
 //ForumController::AddTopic(Session::GetLogin(), "Besoin d'aide sur les pointeurs...", "Bonjour, j'ai besoin d'aide, je comprends pas les pointeurs. On dit par exemple int* i = nullptr;, dans le cours il est dit que int* est une adresse, mais je ne comprends pas, car float* serait une adresse aussi, mais, ce ne sont pas des int et des floats en même temps...?<br>Help!");
 
-/*
+
 
 echo "<h1>Forum</h1>";
 
@@ -152,6 +156,6 @@ foreach($topicHeaders as $topicHeader)
     echo "<p><a href='topic.php?id=$topicHeader->id'>$topicHeader->title</a>, par $topicHeader->creator, $topicHeader->answersNumber réponses.</p>";
 }
 
-*/
+
 
 ?>
