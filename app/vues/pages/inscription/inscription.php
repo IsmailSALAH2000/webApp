@@ -17,7 +17,7 @@ include('../../../controllers/Users/RegisterController.php');
         </header>
 
         <main>
-            <form method="post">
+            <form method="post" action="../../../controllers/Users/RegisterController.php">
                 <h2>INSCRIVEZ-VOUS</h2>
 <!-- 
                <?php //if (isset($_GET['error'])) { ?>
