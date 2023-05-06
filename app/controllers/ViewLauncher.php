@@ -43,6 +43,14 @@ class ViewLauncher
     }
 
     /*
+        Quand l'utilisateur s'est déconnecté.
+    */
+    public static function LoggedOut()
+    {
+        ViewLauncher::OpenView('pages/accueil/accueil.php');
+    }
+
+    /*
         Quand l'inscription n'est pas possible.
     */
     public static function BadRegister(RegisterErrorReason $reason)
