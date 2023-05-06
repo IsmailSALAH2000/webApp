@@ -19,7 +19,7 @@ include('../../../controllers/Users/Sessions.php');
         </header>
 
         <main>
-            <form method="post">
+            <form method="post" action="../../../controllers/Users/LoginController.php">
                 <h2>CONNECTEZ-VOUS</h2>
 <!-- 
                <?php //if (isset($_GET['error'])) { ?>
