@@ -1,8 +1,9 @@
 <?php
 
-require_once 'Lesson.php';
-require_once '/app/controllers/Sessions.php';
-require_once '/app/controllers/ViewLauncher.php';
+require_once __DIR__ . '/Lesson.php';
+require_once __DIR__ . '/../Users/Sessions.php';
+require_once __DIR__ . '/../ViewLauncher.php';
+require_once __DIR__ . '/../../model/Cours.php';
 
 
 /*
@@ -66,9 +67,15 @@ class LessonController
     }
 
     /*
-        Retourne tous les cours du type passé en paramètre.
+        
         $type : type des cours à retourner.
     */
+    /**
+     * Retourne tous les cours d'un type donné.
+     *
+     * @param string $type Le type de cours (par exemple, 'Programmation').
+     * @return array
+     */
     public static function GetAllLessonsOfType(string $type) : array
     {
         $coursInstance = new Cours();

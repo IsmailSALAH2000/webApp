@@ -1,8 +1,8 @@
 <?php
 
-require_once '/app/model/QcmModel.php';
-require_once 'QCMDataStructures.php';
-require_once '/app/controllers/ViewLauncher.php';
+require_once __DIR__ . '/../../model/QcmModel.php';
+require_once __DIR__ . '/QCMDataStructures.php';
+require_once __DIR__ . '/../ViewLauncher.php';
 
 /*
     Au chargement de la page, on va appeler les fonctions demandées dans la variable POST 'whatToDo', qui représentent des endpoints pour cette page. C'est-à-dire que peu importe le résultat de ces fonctions, une vue sera chargée à leur issue.
@@ -68,7 +68,7 @@ class QCMController
      * @param string $id L'id (~ nom) du QCM.
      * @return Qcm|null Retourne une QCM selon son ID. Retourne null en cas d'id introuvable.
      */
-    public static function QetQCMById(string $id) : ?Qcm
+    public static function GetQCMById(string $id) : ?Qcm
     {
         $qcmModelInstance = new QcmModel();
         $rawQCM = $qcmModelInstance->getQCM($id); // Récupération du QCM depuis le modèle sous forme brute.
@@ -144,7 +144,8 @@ class QCMController
             array_push($dataToSend['questions'], $rawQuestion);
         }
 
-        $qcmModelInstance->ajoutQCM($qcm->header->id, $dataToSend);
+        if($qcmModelInstance->ajoutQCM($qcm->header->id, $dataToSend) != 0)
+            throw new Exception('Impossible de créer le qcm.');
 
         ViewLauncher::QCMAdded();
     }

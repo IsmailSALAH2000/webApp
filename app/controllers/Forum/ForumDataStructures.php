@@ -19,8 +19,13 @@ class TopicHeader
 
 class Topic
 {
-    public TopicHeader $header = new TopicHeader();
+    public TopicHeader $header;
     public array $messages = array();
+
+    function __construct()
+    {
+        $this->header = new TopicHeader();
+    }
 }
 
 ?>

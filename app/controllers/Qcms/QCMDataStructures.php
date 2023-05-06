@@ -20,8 +20,13 @@ class Question
 
 class QCM
 {
-    public $header = new QCMHeader();
+    public $header;
     public $questions = array();
+
+    function __construct()
+    {
+        $this->header = new QCMHeader();
+    }
 }
 
 ?>

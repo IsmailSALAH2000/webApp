@@ -5,7 +5,7 @@ class QcmModel {
   //retourne le qcm de nom $id ou null si il n'existe pas
   public function getQCM($id) {
     if($this->QCMExiste($id)) {
-      $xml = simplexml_load_file('../app/model/qcm/'.$id.'.xml');
+      $xml = simplexml_load_file(__DIR__ . '/qcm/'.$id.'.xml');
       $questions = array();
       foreach ($xml->question as $question) {
         $question_text = (string)$question->text;
@@ -25,7 +25,7 @@ class QcmModel {
   //retourne le type du qcm de nom $id ou null si il n'existe pas
   public function getTypeQCM($id) {
     if($this->QCMExiste($id)) {
-      $xml = simplexml_load_file('../app/model/qcm/'.$id.'.xml');
+      $xml = simplexml_load_file(__DIR__ . '/qcm/'.$id.'.xml');
       return $xml->type;
     }
     return null;
@@ -33,7 +33,7 @@ class QcmModel {
 
   //retourne une liste contenant le nom de tous les qcm disponibles
   public function getAllQCM() {
-    $listeFichiers = scandir('../app/model/qcm');
+    $listeFichiers = scandir(__DIR__ . '/qcm');
     $listeQCM = array();
     foreach($listeFichiers as $nomFichier) {
       $taille = strlen($nomFichier);
@@ -72,7 +72,7 @@ class QcmModel {
 
       $dom->appendChild($qcm);
       $dom->formatOutput = true;
-      $dom->save('../app/model/qcm/'.$id.'.xml');//verif que le fichier n'existe pas déjà
+      $dom->save(__DIR__ . '/qcm/'.$id.'.xml');//verif que le fichier n'existe pas déjà
       return 0;
     }
     return 1;
@@ -82,7 +82,7 @@ class QcmModel {
   //retourne 0 si la suppression s'est bien passé, 1 sinon
   public function supprimeQCM($id) {
     if($this->QCMExiste($id)) {
-      unlink('../app/model/qcm/'.$id.'.xml');
+      unlink(__DIR__ . '/qcm/'.$id.'.xml');
       return 0;
     }
     return 1;
@@ -90,7 +90,7 @@ class QcmModel {
 
   //retourne 1 si le qcm existe, 0 sinon
   public function QCMExiste($id) { 
-    $listeQCM = scandir('../app/model/qcm');
+    $listeQCM = scandir(__DIR__ . '/qcm');
     foreach($listeQCM as $nomQCM) {
       if(strcmp($nomQCM, $id.'.xml') == 0) {
         return 1;

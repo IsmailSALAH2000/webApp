@@ -1,10 +1,10 @@
 <?php
 
-require_once '/app/model/forum.php';
-require_once '/app/model/User.php';
-require_once 'ForumDataStructures.php.php';
-require_once '/app/controllers/Users/Sessions.php';
-require_once '/app/controllers/ViewLauncher.php';
+require_once __DIR__ . '/../../model/forum.php';
+require_once __DIR__ . '/../../model/User.php';
+require_once __DIR__ . '/ForumDataStructures.php';
+require_once __DIR__ . '/../Users/Sessions.php';
+require_once __DIR__ . '/../ViewLauncher.php';
 
 /*
     Au chargement de la page, on va appeler les fonctions demandées dans la variable POST 'whatToDo', qui représentent des endpoints pour cette page. C'est-à-dire que peu importe le résultat de ces fonctions, une vue sera chargée à leur issue.

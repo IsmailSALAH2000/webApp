@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qcm>
+  <type>Programmation</type>
+  <question>
+    <text>En C++, quel mot clé est utilisé pour assigner à un pointeur une adresse invalide ?</text>
+    <choice correct="true">nullptr</choice>
+    <choice correct="">NULL</choice>
+    <choice correct="">0</choice>
+    <choice correct="">N'importe quelle valeur.</choice>
+  </question>
+  <question>
+    <text>En C++, quelles sont les syntaxes &lt;u&gt;incorrectes&lt;/u&gt; ?</text>
+    <choice correct="">std::vector&lt;int&gt; var = {1, 2, 3, 4};</choice>
+    <choice correct="true">std::vector(int) var = {1, 2, 3, 4};</choice>
+    <choice correct="true">std::vector&lt;int&gt; var = 3;</choice>
+    <choice correct="">std::vector&lt;int&gt; var(3);</choice>
+  </question>
+</qcm>
