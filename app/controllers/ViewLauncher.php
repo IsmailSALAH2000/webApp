@@ -15,7 +15,7 @@ class ViewLauncher
     */
     public static function OpenView($name)
     {
-        header('location:' . __DIR__ . '/../vues/' . $name);
+        header('location:/webApp/app/vues/pages/' . $name);
     }
 
     /*
@@ -31,7 +31,7 @@ class ViewLauncher
     */
     public static function BadLogin()
     {
-        ViewLauncher::OpenView('pages/connexion/connexion.php');
+        ViewLauncher::OpenView('connexion/connexion.php');
     }
 
     /*
@@ -39,7 +39,7 @@ class ViewLauncher
     */
     public static function LoggedIn()
     {
-        ViewLauncher::OpenView('pages/accueil/accueil.php');
+        ViewLauncher::OpenView('accueil/accueil.php');
     }
 
     /*
@@ -47,7 +47,7 @@ class ViewLauncher
     */
     public static function LoggedOut()
     {
-        ViewLauncher::OpenView('pages/accueil/accueil.php');
+        ViewLauncher::OpenView('accueil/accueil.php');
     }
 
     /*
@@ -55,7 +55,7 @@ class ViewLauncher
     */
     public static function BadRegister(RegisterErrorReason $reason)
     {
-        ViewLauncher::OpenView('pages/inscription/inscription.php');
+        ViewLauncher::OpenView('inscription/inscription.php');
     }
 
     /*
@@ -63,7 +63,7 @@ class ViewLauncher
     */
     public static function Registered()
     {
-        ViewLauncher::OpenView('pages/accueil/accueil.php');
+        ViewLauncher::OpenView('accueil/accueil.php');
     }
 
     /*
@@ -106,7 +106,7 @@ class ViewLauncher
      */
     public static function TopicCreated(int $id)
     {
-        ViewLauncher::OpenView('forum/topicview.php?id=' . $id);
+        ViewLauncher::OpenView('forum/topicView.php?id=' . $id);
     }
     
     /**
