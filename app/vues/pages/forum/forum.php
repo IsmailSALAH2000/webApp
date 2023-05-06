@@ -45,7 +45,7 @@ include '../../../controllers/Forum/ForumController.php';
                         $answerNumber = htmlspecialchars($listeTopics[$i]->answersNumber);
                         $id = htmlspecialchars($listeTopics[$i]->id);
                         $html=<<<HTML
-                            <a href="#">
+                            <a href='topicView.php?id={$id}'>
                                 <div class="topic-header">
                                     <div class="titre-topic">$titre</div>
                                     <div class="bottom-topic-header">
