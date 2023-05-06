@@ -47,7 +47,7 @@ include '../../../controllers/Forum/ForumController.php';
                 <input type="hidden" name="whatToDo" value="addMessage">
                 <input type="hidden" name="creatorLogin" value="<?php echo $user; ?>">
                 <input type="hidden" name="idTopic" value="<?php echo $idTopic; ?>">
-                <input type="text" name="message" placeholder="Ecrivez votre message." required>
+                <input type="text" name="messageContent" placeholder="Ecrivez votre message." required>
                 <button type="submit">Poster</button>
             </form>
 

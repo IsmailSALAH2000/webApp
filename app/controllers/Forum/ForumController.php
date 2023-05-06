@@ -81,7 +81,10 @@ class ForumController
             $topicHeader->id = $rawTopic['idTopic'];
             $topicHeader->title = $rawTopic['titre'];
             $rawUser = $userInstance->getUtilisateur($rawTopic['idUtilisateur']);
-            $topicHeader->creator = $rawUser['prenom'] . ' ' . $rawUser['nom'];
+            if(!empty($rawUser))
+                $topicHeader->creator = $rawUser['prenom'] . ' ' . $rawUser['nom'];
+            else
+                $topicHeader->creator = 'Utilisateur supprimé';
             $topicHeader->answersNumber = $rawTopic['nbReponses'];
 
             array_push($topicHeaders, $topicHeader);
@@ -110,7 +113,10 @@ class ForumController
         $topic->header->id = $rawTopic['idTopic'];
         $topic->header->title = $rawTopic['titre'];
         $rawUser = $userInstance->getUtilisateur($rawTopic['idUtilisateur']);
-        $topic->header->creator = $rawUser['prenom'] . ' ' . $rawUser['nom'];
+        if(!empty($rawUser))
+            $topic->header->creator = $rawUser['prenom'] . ' ' . $rawUser['nom'];
+        else
+            $topic->header->creator = 'Utilisateur supprimé';
         $topic->header->answersNumber = $rawTopic['nbReponses'];
 
         $rawMessages = $forumInstance->getAllMessages($rawTopic['idTopic']);
@@ -123,7 +129,10 @@ class ForumController
             $message->id = $rawMessage['idMessage'];
             $message->idTopic = $id;
             $rawUser = $userInstance->getUtilisateur($rawMessage['idUtilisateur']);
-            $message->author = $rawUser['prenom'] . ' ' . $rawUser['nom'];
+            if(!empty($rawUser))
+                $message->author = $rawUser['prenom'] . ' ' . $rawUser['nom'];
+            else
+                $message->author = 'Utilisateur supprimé';
             $message->date = $rawMessage['dateMessage'];
             $message->content = $rawMessage['contenu'];
 
