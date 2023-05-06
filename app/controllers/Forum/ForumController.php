@@ -16,8 +16,9 @@ require_once __DIR__ . '/../ViewLauncher.php';
             - 'title', correspond au titre du topic (string).
             - 'firstMessageContent', correspond au contenu du premier message (string).
         - 'addMessage' pour créer un message. Paramètres supplémentaires obligatoires :
-            - 'message', correspond à une instance de la classe Message. L'attribut "id" sera ignoré.
+            - 'messageContent', correspond au contenu du message (string).
             - 'creatorLogin', correspond au login du créateur (string) (peut être obtenu via la classe Session).
+            - 'idTopic', correspond à l'id du topic dans lequel on souhaite ajouter le message (int).
         - 'removeTopic' pour supprimer un topic. Paramètres supplémentaires obligatoires :
             - 'id', correspond à l'id du topic à supprimer (int).
         - 'removeMessage' pour supprimer un message. Paramètres supplémentaires obligatoires :
@@ -35,9 +36,12 @@ if(isset($_POST['whatToDo']))
             ForumController::AddTopic($_POST['creatorLogin'], $_POST['title'], $_POST['firstMessageContent']);
             break;
         case 'addMessage':
-            if(!isset($_POST['message']) || !isset($_POST['creatorLogin']))
+            if(!isset($_POST['messageContent']) || !isset($_POST['creatorLogin']) || !isset($_POST['idTopic']))
                 throw new Exception('Impossible d\'ajouter un message : un ou plusieurs paramètre(s) POST inexistant(s).');
-            ForumController::AddMessage($_POST['message'], $_POST['creatorLogin']);
+            Message: $msg = new Message();
+            $msg->content = $_POST['messageContent'];
+            $msg->idTopic = $_POST['idTopic'];
+            ForumController::AddMessage($msg, $_POST['creatorLogin']);
             break;
         case 'removeTopic':
             if(!isset($_POST['id']))
