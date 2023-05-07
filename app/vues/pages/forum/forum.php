@@ -25,12 +25,14 @@ include '../../../controllers/Forum/ForumController.php';
             <h1 class="titrePage">Bienvenue sur le forum !</h1>
             <h3 class="sous-titrePage">Créer un topic.</h3>
 
-            <form method="post">
+            <form method="post" id="create-post">
                 <input type="hidden" name="whatToDo" value="addTopic">
                 <input type="hidden" name="creatorLogin" value="<?php echo $user; ?>">
-                <input type="text" name="title" placeholder="Titre de votre post" required>
-                <input type="text" name="firstMessageContent" placeholder="Ecrivez votre message." required>
-                <button type="submit">Poster</button>
+                <label for="title">Titre:</label>
+                <input type="text" class="create-title" name="title" placeholder="Titre de votre poste." required>
+                <label for="firstMessageContent">Contenu:</label>
+                <input type="text" class="first-message" name="firstMessageContent" placeholder="Ecrivez votre message." required>
+                <button type="submit" class="btn-modif">Poster</button>
             </form>
 
             <h3 class="sous-titrePage">Voir les topics existants.</h3>
@@ -47,20 +49,20 @@ include '../../../controllers/Forum/ForumController.php';
                         $html=<<<HTML
                             <a href='topicView.php?id={$id}'>
                                 <div class="topic-header">
-                                    <div class="titre-topic">$titre</div>
                                     <div class="bottom-topic-header">
-                                        <div class="creator-topic">$creator</div>
-                                        <div class="nb-answer-topic">$answerNumber</div>
+                                        <div class="creator-topic">Auteur: $creator</div>
+                                        <div class="nb-answer-topic">Réponse(s): $answerNumber</div>
                                     </div>
+                                    <h2 class="titre-topic">$titre</h2>
                         HTML;
                         echo $html;
                         
-                        if ($isAdmin) {
+                        if (!$isAdmin) {
                             $html=<<<HTML
                                     <form method="post">
                                         <input type="hidden" name="whatToDo" value="removeTopic">
                                         <input type="hidden" name="id" value='{$id}'>
-                                        <button type="submit">Supprimer</button>
+                                        <button type="submit" class="btn-modif">Supprimer</button>
                                     </form>
                                 </div>
                             </a>
@@ -82,4 +84,4 @@ include '../../../controllers/Forum/ForumController.php';
         <?php footer(); ?>
     </body>
 
-</html>
+</html> 
