@@ -57,7 +57,7 @@ include '../../../controllers/Forum/ForumController.php';
                         HTML;
                         echo $html;
                         
-                        if (!$isAdmin) {
+                        if ($isAdmin) {
                             $html=<<<HTML
                                     <form method="post">
                                         <input type="hidden" name="whatToDo" value="removeTopic">
