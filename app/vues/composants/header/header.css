@@ -1,20 +1,4 @@
-/*on reset tout*/
-*{
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
-}
 
-html, body{
-    height: 100%;
-}
-
-body{
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    display: flex;
-    flex-direction: column;
-}
 /**********HEADER*******/
 header{
     height:130px;
@@ -124,17 +108,4 @@ header{
     .navbar .nav-links ul li a{
         color: black;
     }
-}
-
-/************** Main **************/
-main{
-    background-color: #fff;
-    flex-grow: 1;
-}
-
-
-/********FOOTER*******/
- footer{
-    background: linear-gradient(to left, rgb(122, 122, 186), pink);
-    padding: 20px;
 }
