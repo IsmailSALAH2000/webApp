@@ -29,9 +29,9 @@ include '../../../controllers/Forum/ForumController.php';
                 <input type="hidden" name="whatToDo" value="addTopic">
                 <input type="hidden" name="creatorLogin" value="<?php echo $user; ?>">
                 <label for="title">Titre:</label>
-                <input type="text" class="create-title" name="title" placeholder="Titre de votre poste." required>
+                <textarea class="create-title" name="title" placeholder="Titre de votre poste." required></textarea>
                 <label for="firstMessageContent">Contenu:</label>
-                <input type="text" class="first-message" name="firstMessageContent" placeholder="Ecrivez votre message." required>
+                <textarea class="first-message" name="firstMessageContent" placeholder="Ecrivez votre message." required></textarea>
                 <button type="submit" class="btn-modif">Poster</button>
             </form>
 
@@ -47,8 +47,8 @@ include '../../../controllers/Forum/ForumController.php';
                         $answerNumber = htmlspecialchars($listeTopics[$i]->answersNumber);
                         $id = htmlspecialchars($listeTopics[$i]->id);
                         $html=<<<HTML
-                            <a href='topicView.php?id={$id}'>
                                 <div class="topic-header">
+                                    <a href='topicView.php?id={$id}'>
                                     <div class="bottom-topic-header">
                                         <div class="creator-topic">Auteur: $creator</div>
                                         <div class="nb-answer-topic">Réponse(s): $answerNumber</div>
@@ -64,15 +64,15 @@ include '../../../controllers/Forum/ForumController.php';
                                         <input type="hidden" name="id" value='{$id}'>
                                         <button type="submit" class="btn-modif">Supprimer</button>
                                     </form>
+                                    </a>
                                 </div>
-                            </a>
                             HTML;
                             echo $html;
                         }
                         else{
                             $html=<<<HTML
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                             HTML;
                             echo $html;
                         }
