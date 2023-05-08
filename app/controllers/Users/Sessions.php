@@ -1,5 +1,11 @@
 <?php
 
+enum Theme
+{
+    case Bright;
+    case Dark;
+}
+
 session_start();
 
 class Session
@@ -16,6 +22,19 @@ class Session
     public static function Exists()
     {
         return isset($_SESSION['login']);
+    }
+
+    public static function GetTheme() : Theme
+    {
+        if(!isset($_SESSION['theme'])) 
+            $_SESSION['theme'] = Theme::Bright;
+
+        return $_SESSION['theme'];
+    }
+
+    public static function SetTheme(Theme $newTheme)
+    {
+        $_SESSION['theme'] = $newTheme;
     }
 
     public static function GetLogin()
