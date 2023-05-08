@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qcm>
+  <type>Culture</type>
+  <question>
+    <text>Quelle est la capitale de la France ?</text>
+    <choice correct="true">Paris</choice>
+    <choice correct="">Marseille</choice>
+    <choice correct="">Lyon</choice>
+    <choice correct="">Bordeaux</choice>
+  </question>
+  <question>
+    <text>Quel est le plus grand pays du monde ?</text>
+    <choice correct="true">Russie</choice>
+    <choice correct="">Canada</choice>
+    <choice correct="">Chine</choice>
+    <choice correct="">États-Unis</choice>
+  </question>
+  <question>
+    <text>Quelle est la couleur du cheval blanc d'Henri IV ?</text>
+    <choice correct="">Blanc</choice>
+    <choice correct="">Noir</choice>
+    <choice correct="">Rouge</choice>
+    <choice correct="true">Gris</choice>
+  </question>
+</qcm>
