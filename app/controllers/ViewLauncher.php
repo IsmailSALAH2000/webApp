@@ -93,9 +93,9 @@ class ViewLauncher
     /*
         Quand un cours a été ajouté avec succès.
     */
-    public static function LessonAddedError()
+    public static function LessonAddedError($error)
     {
-        ViewLauncher::OpenView('cours/ajoutCours.php?error=Nom de fichier déjà existant');
+        ViewLauncher::OpenView('cours/ajoutCours.php?error='.$error);
     }
 
     /*
