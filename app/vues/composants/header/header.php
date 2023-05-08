@@ -32,7 +32,7 @@ function navBar($c){
                 <li><a href="../../pages/qcm/qcm.php">QCM</a></li>
                 <li><a href="../../pages/forum/forum.php">FORUM</a></li>
                 <li><a href="#" class="btnConnection"></a>$user</li>
-                <li><a href="../../pages/connexion/connexion.php">SE DECONNECTER</a></li>
+                <li><a href="../../../controllers/Users/LogoutController.php">SE DECONNECTER</a></li>
                 <!-- <ul class="menuConnection">
                     <li><a href="#" class="choixMenu">Paramètres</a></li>
                     <li><a href="#" class="choixMenu">Déconnexion</a></li>
@@ -45,7 +45,7 @@ function navBar($c){
     $html=<<<HTML
         <header>
             <nav class="navbar">
-                <a href="#" class="logo">MOODLE</a>
+                <a href="../../pages/accueil/accueil.php" class="logo">MOODLE</a>
                 <div class="nav-links">
                     <ul>
                         {$connecter($c)}
