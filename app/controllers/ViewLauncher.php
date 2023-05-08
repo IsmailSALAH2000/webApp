@@ -87,7 +87,15 @@ class ViewLauncher
     */
     public static function LessonAdded()
     {
-        ViewLauncher::OpenView('pageCours.php');
+        ViewLauncher::OpenView('cours/listeCours.php');
+    }
+
+    /*
+        Quand un cours a été ajouté avec succès.
+    */
+    public static function LessonAddedError()
+    {
+        ViewLauncher::OpenView('cours/ajoutCours.php?error=Nom de fichier déjà existant');
     }
 
     /*
@@ -95,7 +103,7 @@ class ViewLauncher
     */
     public static function LessonRemoved()
     {
-        ViewLauncher::OpenView('pageCours.php');
+        ViewLauncher::OpenView('cours/listeCours.php');
     }
     
     /**
