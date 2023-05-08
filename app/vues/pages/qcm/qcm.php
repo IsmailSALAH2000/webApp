@@ -59,7 +59,7 @@ if(isset($_POST['delQCM'])) {
         $headers = QCMController::GetAllQCMHeaders();
         foreach($headers as $h)
         {
-            echo "<input type=\"checkbox\" name=\"QCMChoisi\" value=\"$h->id\"> $h->id <br>";
+            echo "<input type=\"radio\" name=\"QCMChoisi\" value=\"$h->id\" checked=\"true\"> $h->id <br>";
         }
         $isAdmin = Session::IsAdmin();
             if($isAdmin){
