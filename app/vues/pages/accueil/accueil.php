@@ -1,6 +1,5 @@
 <?php
 include('../../composants/header/header.php');
-include('../../composants/footer/footer.php');
 include('../../../controllers/Users/Sessions.php');
 ?>
 
