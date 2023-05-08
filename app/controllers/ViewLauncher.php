@@ -71,7 +71,7 @@ class ViewLauncher
     */
     public static function QCMAdded()
     {
-        ViewLauncher::OpenView('admin/qcmList.php');
+        ViewLauncher::OpenView('qcm/qcm.php');
     }
 
     /*
@@ -79,7 +79,7 @@ class ViewLauncher
     */
     public static function QCMRemoved()
     {
-        ViewLauncher::OpenView('admin/qcmList.php');
+        ViewLauncher::OpenView('qcm/qcm.php');
     }
 
     /*
