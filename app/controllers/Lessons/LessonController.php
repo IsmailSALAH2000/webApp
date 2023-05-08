@@ -12,7 +12,10 @@ require_once __DIR__ . '/../../model/Cours.php';
     Utilisation : passer les paramètres en POST.
     'whatToDo' correspond à :
         - 'addLesson' pour ajouter un cours. Paramètres supplémentaires obligatoires :
-            - 'lesson', correspond à une instance de la classe cours.
+            - 'title', titre du cours.
+            - 'description', description du cours.
+            - 'type', type du cours.
+            - 'file', chemin d'accès au cours.
         - 'removeLesson' pour supprimer un cours. Paramètres supplémentaires obligatoires :
             - 'lessonId', correspond à l'id du cours à supprimer.
 */
@@ -22,9 +25,9 @@ if(isset($_POST['whatToDo']))
     switch($_POST['whatToDo'])
     {
         case 'addLesson':
-            if(!isset($_POST['lesson']))
-                throw new Exception('Impossible d\'ajouter une lesson : paramètre POST "lesson" inexistant.');
-            LessonController::AddLEsson($_POST['lesson']);
+            if(!isset($_POST['title']) || !isset($_POST['description']) || !isset($_POST['type']) || !isset($_FILES['file']))
+                throw new Exception('Impossible d\'ajouter une lesson : paramètre POST ou FILES manquant.');
+            LessonController::AddLesson($_POST['title'], $_POST['description'], $_POST['type'], $_FILES['file']);
             break;
         case 'removeLesson' :
             if(!isset($_POST['lessonId']))
@@ -41,6 +44,7 @@ class LessonController
         Ajouter un cours.
         $lesson : instance de la classe Lesson contenant les informations nécessaires à la création du cours.
     */
+    /*
     public static function AddLesson(Lesson $lesson)
     {
         //On verifie si la session existe et si l'utilisateur est admin 
@@ -53,6 +57,33 @@ class LessonController
         else throw new Exception('Aucune session en cours ou utilisateur non admin'); 
        
         ViewLauncher::LessonAdded();
+    }*/
+
+    /*
+        Ajouter un cours.
+        $title : titre du cours.
+        $description : description du cours.
+        $type : type du cours.
+        $file : chemin d'accès au cours.
+    */
+    public static function AddLesson($title, $description, $type, $file)
+    {
+        //On verifie si la session existe et si l'utilisateur est admin 
+        if(Session::Exists() && Session::IsAdmin())
+        {
+            if ($file['error'] === UPLOAD_ERR_OK) { //Vérification du téléchargement
+                $fileName = basename($file['name']);
+                $extension = substr($fileName, -4);
+                if($extension == ".mp4" || $extension == ".pdf") { //Vérification du format
+                    $coursInstance = new Cours();
+                    if(!$coursInstance->ajoutCours($title, $description, $type, $file)) ViewLauncher::LessonAddedError();
+                    else ViewLauncher::LessonAdded();
+                }
+                else throw new Exception('Mauvais format');
+            }
+            else throw new Exception('Erreur lors du téléchargement du fichier');
+        }
+        else throw new Exception('Aucune session en cours ou utilisateur non admin'); 
     }
 
     /*
@@ -67,7 +98,35 @@ class LessonController
     }
 
     /*
-        
+     * Retourne tous les cours disponibles.
+     */
+    public static function GetAllLessons() : array
+    {
+        $coursInstance = new Cours();
+
+        //On récupère les cours tels qu'ils sont dans la bdd
+        $rawLessons = $coursInstance->getAllCours();
+
+        $out = array();
+
+        //Pour chaque cours, on créé une instance de Lesson que l'on ajoute à un tableau.
+        if($rawLessons)
+            foreach($rawLessons as $rawLesson){
+                $lesson = new Lesson;
+                $lesson->idCours = $rawLesson['idCours'];
+                $lesson->titre = $rawLesson['titre'];
+                $lesson->description = $rawLesson['description'];
+                $lesson->type = $rawLesson['type'];
+                $lesson->chemin = $rawLesson['chemin'];
+                $lesson->dateCours = $rawLesson['dateCours'];
+
+                array_push($out, $lesson);
+            }
+
+        return $out;
+    }
+
+    /*
         $type : type des cours à retourner.
     */
     /**
@@ -102,9 +161,9 @@ class LessonController
     }
 
     /*
-        Retourne un cours selon son ID. Retourne null en cas d'id introuvable.
+        Retourne un tableau contenant un cours selon son ID ainsi que son format (.mp4, .pdf ou .pptx). Retourne null en cas d'id introuvable.
     */
-    public static function GetLessonById(int $id) : ?Lesson
+    public static function GetLessonById(int $id) : array
     {
         $coursInstance = new Cours();
         $rawLesson = $coursInstance->getCours($id); // Récupération le cours depuis le modèle sous forme brute.
@@ -119,7 +178,32 @@ class LessonController
         $lesson->chemin = $rawLesson['chemin'];
         $lesson->dateCours = $rawLesson['dateCours'];
 
-        return $lesson;
+        // Recherche du format utilisé pour ce cours.
+        $extension = substr($lesson->chemin, -4);
+        if($extension == ".mp4") { // format mp4
+            $format = ".mp4";
+        }
+        else {
+            if($extension == ".pdf") { // format pdf
+                $format = ".pdf";
+            }
+        }
+
+        $LessonWithFormat = array(
+            "format" => $format,
+            "cours" => $lesson
+        );
+
+        return $LessonWithFormat;
+    }
+
+    /*
+        Retourne tous les types de cours existants.
+    */
+    public static function GetAllTypes()
+    {
+        $coursInstance = new Cours();
+        return $coursInstance->getAllTypes();
     }
 
 }
