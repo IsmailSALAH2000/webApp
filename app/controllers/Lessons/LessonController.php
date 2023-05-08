@@ -76,10 +76,10 @@ class LessonController
                 $extension = substr($fileName, -4);
                 if($extension == ".mp4" || $extension == ".pdf") { //Vérification du format
                     $coursInstance = new Cours();
-                    if(!$coursInstance->ajoutCours($title, $description, $type, $file)) ViewLauncher::LessonAddedError();
+                    if(!$coursInstance->ajoutCours($title, $description, $type, $file)) ViewLauncher::LessonAddedError("Nom de fichier déjà existant");
                     else ViewLauncher::LessonAdded();
                 }
-                else throw new Exception('Mauvais format');
+                else ViewLauncher::LessonAddedError("Mauvais format");
             }
             else throw new Exception('Erreur lors du téléchargement du fichier');
         }
