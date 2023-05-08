@@ -1,3 +1,23 @@
+/*on reset tout*/
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+}
+
+body{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/*reste de la page*/
 .titrePage{
     text-align: center;
     margin-top: 2%;
@@ -77,3 +97,7 @@ a:link, a:visited, a:hover, a:active{
 label{
     margin-top: 1%;
 }
+
+a{
+    text-decoration:none;
+  }
