@@ -9,7 +9,7 @@ include '../../../controllers/Forum/ForumController.php';
 <html lang="fr">
 
     <head>
-        <?php head('Forum', '../../pages/forum/forum.css');?>
+        <?php head('Forum', '../../pages/forum/topicview.css');?>
     </head>
 
     <body>
@@ -25,30 +25,34 @@ include '../../../controllers/Forum/ForumController.php';
         <main>
             <?php 
                 $topic = ForumController::GetFullTopic($idTopic);
+                $listeMessage = $topic->messages;
                 $titre = htmlspecialchars($topic->header->title);
                 $creator = htmlspecialchars($topic->header->creator);
                 $answerNumber = htmlspecialchars($topic->header->answersNumber);
-                $id = htmlspecialchars($topic->header->id);
+                $date = htmlspecialchars($listeMessage[0]->date);
+                $content = htmlspecialchars($listeMessage[0]->content);
                 $html=<<<HTML
                     <h1 class="titreTopic">$titre</h1>
                     <div class="full-topic">
-                        <div class="topic-content">$titre</div>
-                            <div class="bottom-full-topic">
-                                <div class="creator-topic">$creator</div>
-                                <div class="nb-answer-topic">$answerNumber</div>
-                            </div>
+                        <div class="bottom-full-topic">
+                            <div class="creator-topic">Auteur: $creator</div>
+                            <div class="nb-answer-topic">Réponse(s): $answerNumber</div>
+                        </div>
+                        <div class="content">$content</div>
+                        <div class="date">Date de publication: $date</div>
                     </div>
                  HTML;
                 echo $html;
             ?>
             <h3 class="sous-titrePage">Ajouter un message.</h3>
 
-            <form method="post">
+            <form method="post" id="create-message">
                 <input type="hidden" name="whatToDo" value="addMessage">
                 <input type="hidden" name="creatorLogin" value="<?php echo $user; ?>">
                 <input type="hidden" name="idTopic" value="<?php echo $idTopic; ?>">
-                <input type="text" name="messageContent" placeholder="Ecrivez votre message." required>
-                <button type="submit">Poster</button>
+                <label for="messageContent">Votre message:</label>
+                <textarea class="messageContent" name="messageContent" placeholder="Ecrivez votre message." required></textarea>
+                <button type="submit" class="btn-modif">Poster</button>
             </form>
 
             <h3 class="sous-titrePage">Réponses:</h3>
@@ -56,8 +60,10 @@ include '../../../controllers/Forum/ForumController.php';
             <?php 
                 if($isLogged){
                     $isAdmin = Session::IsAdmin();
-                    $listeMessage = $topic->messages;
-                    for ($i=0; $i < count($listeMessage) ; $i++) {
+                    $html=<<<HTML
+                    <h3 class="sous-titrePage">Réponses:</h3>
+                    HTML;
+                    for ($i=1; $i < count($listeMessage) ; $i++) {
                         $creator = htmlspecialchars($listeMessage[$i]->author); 
                         $date = htmlspecialchars($listeMessage[$i]->date);
                         $content = htmlspecialchars($listeMessage[$i]->content);
@@ -65,8 +71,8 @@ include '../../../controllers/Forum/ForumController.php';
                         $html=<<<HTML
                             <div class="message">
                                 <div class="message-header">
-                                    <div class="message-creator">$creator</div>
-                                    <div class="date-message">$date</div>
+                                    <div class="message-creator">Auteur: $creator</div>
+                                    <div class="date-message">Date: $date</div>
                                 </div>
                                 <div class="message-content">$content</div>
                         HTML;
@@ -78,14 +84,17 @@ include '../../../controllers/Forum/ForumController.php';
                                         <input type="hidden" name="whatToDo" value="removeMessage">
                                         <input type="hidden" name="idTopic" value='{$idTopic}'>
                                         <input type="hidden" name="idMessage" value='{$id}'>
-                                        <button type="submit">Supprimer</button>
+                                        <button type="submit" class="btn-modif">Supprimer</button>
                                     </form>
                                 </div>
                             HTML;
                             echo $html;
                         }
                         else{
-                            echo '<div/>';
+                            $html=<<<HTML
+                            </div>
+                            HTML;
+                            echo $html;
                         }
                     }
                 }
