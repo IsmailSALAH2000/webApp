@@ -18,6 +18,15 @@ body{
 
 /************** Main **************/
 main{
-    background-color: #fff;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('fond.jpg');
+    background-size: cover;
     flex-grow: 1;
+    display: flex;
+}
+/********FOOTER*******/
+footer{
+    background: linear-gradient(to left, rgb(224, 214, 174), rgb(232, 161, 54));
+    padding: 20px;
 }
