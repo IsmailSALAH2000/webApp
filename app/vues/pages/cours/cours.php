@@ -17,6 +17,9 @@ include '../../../controllers/Lessons/LessonController.php';
             $isLogged = Session::Exists();
             navBar($isLogged); 
             $idCours = $_GET['id'];
+            if($idCours == 0) {
+                ViewLauncher::Error404();
+            }
             ?>
         </header>
 
@@ -35,34 +38,37 @@ include '../../../controllers/Lessons/LessonController.php';
                     }
 
                     $cours = LessonController::GetLessonById($idCours);
-                    $titre = htmlspecialchars($cours['cours']->titre);
-                    $description = htmlspecialchars($cours['cours']->description);
-                    $type = htmlspecialchars($cours['cours']->type);
-                    $chemin = htmlspecialchars($cours['cours']->chemin);
-                    $dateCours = htmlspecialchars($cours['cours']->dateCours);
-                    $format = htmlspecialchars($cours['format']);
-            ?>        
-                <div class="cadreCours2">
-                    <h3 class="titre"><?php echo $titre; ?></h3>
-                    <div class="typeDate">
-                        <div class="type"><?php echo $type; ?></div>
-                        <div class="date"><?php echo $dateCours; ?></div>
-                    </div>
-                    <div class="description"><?php echo $description; ?></div>
-                    </div>
-            <?php 
-                    if($format == ".mp4") {
-            ?>
-                        <video width="70%" controls>
-                            <source src=<?php echo $chemin;?> type="video/mp4">
-                        </video>
-            <?php
-                    }
+                    if($cours == null) ViewLauncher::Error404();
                     else {
-                        if($format == ".pdf") {
+                        $titre = htmlspecialchars($cours['cours']->titre);
+                        $description = htmlspecialchars($cours['cours']->description);
+                        $type = htmlspecialchars($cours['cours']->type);
+                        $chemin = htmlspecialchars($cours['cours']->chemin);
+                        $dateCours = htmlspecialchars($cours['cours']->dateCours);
+                        $format = htmlspecialchars($cours['format']);
+            ?>        
+                        <div class="cadreCours2">
+                            <h3 class="titre"><?php echo $titre; ?></h3>
+                            <div class="typeDate">
+                                <div class="type"><?php echo $type; ?></div>
+                                <div class="date"><?php echo $dateCours; ?></div>
+                            </div>
+                            <div class="description"><?php echo $description; ?></div>
+                        </div>
+            <?php 
+                        if($format == ".mp4") {
             ?>
-                            <embed src=<?php echo $chemin;?> type="application/pdf" width="100%" height="1000px"/>
+                            <video width="70%" controls>
+                                <source src=<?php echo $chemin;?> type="video/mp4">
+                            </video>
             <?php
+                        }
+                        else {
+                            if($format == ".pdf") {
+            ?>
+                                <embed src=<?php echo $chemin;?> type="application/pdf" width="100%" height="1000px"/>
+            <?php
+                            }
                         }
                     }
                 }
