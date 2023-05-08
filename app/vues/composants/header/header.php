@@ -9,7 +9,6 @@ function head($titrePage, $lienStylePage){
         <title>$titrePage</title>
         <link rel="stylesheet" type="text/css" href="$lienStylePage"/>
         <link rel="stylesheet" type="text/css" href="../../composants/header/header.css"/>
-        <link rel="stylesheet" type="text/css" href="../../composants/footer/footer.css"/>
         <meta charset="UTF-8"/>
         <meta name="author" content="BEAUJON Alexandre, MALOIGNE Anthony, PERE Brandon, ROBINET Perrine, SALAH Ismail, STRAINCHAMPS Clothilde" />
     HTML;
