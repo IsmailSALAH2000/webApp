@@ -28,7 +28,7 @@ function navBar($c){
         else{
             $user = Session::GetLogin();
             $html=<<<HTML
-                <li><a href="../../pages/cours/cours.php">COURS</a></li>
+                <li><a href="../../pages/cours/listeCours.php">COURS</a></li>
                 <li><a href="../../pages/qcm/qcm.php">QCM</a></li>
                 <li><a href="../../pages/forum/forum.php">FORUM</a></li>
                 <li><a href="#" class="btnConnection"></a>$user</li>
