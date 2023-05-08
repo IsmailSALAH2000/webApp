@@ -20,8 +20,13 @@ include('../../../controllers/Users/Sessions.php');
 
         <main>
         </main>
-
-        <?php footer(); ?>
+        
+        <footer>
+            <div id="copyright-wrapper">
+                <h3 id="copyright">MOODLE | © 2023</h3>
+            </div>
+        </footer>
+        
+        <script src="../../composants/header/header.js"></script>
     </body>
-
 </html>
