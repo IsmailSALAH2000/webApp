@@ -1,0 +1,90 @@
+/*on reset tout*/
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+html, body{
+    height: 100%;
+}
+
+body{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/************** Main **************/
+main{
+    background-color: #fff;
+    flex-grow: 1;
+}
+
+form{
+    padding: 30px;
+    margin-top: 150px;
+    margin-left: 20%;
+    margin-right: 20%;
+    border: 2px solid #ccc;
+    background: #dba93575;
+    border-radius: 15px;
+}
+
+h2{ 
+    text-transform : uppercase;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+input{
+    border: 2px solid #ccc;
+    width: 80%;
+    padding: 10px;
+    margin:10px auto;
+}
+
+.checkbox{
+    width: 20px;
+}
+
+label{
+    color: #888;
+    font-size: 1em;
+}
+
+button{
+    text-align: center;
+    background: #555;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.2em;
+}
+
+button:hover{
+    opacity: 0.7;
+}
+
+h1{
+    margin-top: 100px;
+    text-align: center;
+    font-size: xx-large;
+}
+
+#correction{
+    padding: 30px;
+    margin-top: 90px;
+    margin-left: 20%;
+    margin-right: 20%;
+    border: 2px solid #ccc;
+    background: #dba93575;
+    border-radius: 15px;
+}
+
+
+div p{
+    padding: 10px;
+}
+

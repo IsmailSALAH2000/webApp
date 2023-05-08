@@ -1,0 +1,88 @@
+/*on reset tout*/
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+}
+
+body{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+}
+/************** Main **************/
+main{
+    background-color: #000000;
+    flex-grow: 1;
+}
+
+fieldset{
+    padding: 30px;
+    margin-top: 150px;
+    margin-left: 30%;
+    margin-right: 30%;
+    border: 2px solid rgb(232, 161, 54);
+    background: #000000;
+    border-radius: 15px;
+}
+
+legend{
+    font-size: x-large;
+    color: rgb(232, 161, 54);
+}
+input{
+    margin-top: 10px;
+    border: 2px solid #ffffff;
+    padding: 20px;
+    margin:10px auto;
+
+}
+#theme-button{
+    text-align: center;
+    background: #555;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.2em;
+}
+button{
+    margin-top: 10px;
+    text-align: center;
+    background: linear-gradient(to left, rgb(232, 161, 54), rgb(0, 0, 0));
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.2em;
+}
+
+button:hover{
+    opacity: 0.7;
+}
+
+#addQCM, #supprQCM{
+    margin-top: 10px;
+    background: #555;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+button:hover{
+    opacity: 0.7;
+}
+
+p{
+    display: inline; ;
+    color: #fff;
+}
