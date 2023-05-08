@@ -136,6 +136,7 @@ if ($currentTheme === 'dark') {
             document.cookie = 'theme=' + newTheme + '; path=/; max-age=' + 30 * 24 * 60 * 60;
             location.reload();
         }
+        </script>
     </body>
 
 </html>

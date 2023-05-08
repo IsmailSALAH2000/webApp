@@ -33,11 +33,13 @@
 }
 
 .titre{
+    color: white;
     padding-top: 1%;
     padding-bottom: 1%;
 }
 
 .typeDate{
+    color: white;
     display: grid;
     gap: 10px;
 }
@@ -50,6 +52,10 @@
 
 .date{
     grid-row: 1;
+}
+
+.description {
+    color: white;
 }
 
 a:link, a:visited, a:hover, a:active{
@@ -80,4 +86,14 @@ a:link, a:visited, a:hover, a:active{
 video {
     display: block;
     margin: 0 auto;
+}
+
+#theme-button{
+    text-align: center;
+    background: #555;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.2em;
 }

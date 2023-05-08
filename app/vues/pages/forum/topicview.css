@@ -112,3 +112,13 @@ color: rgba(255, 0, 208, 0.265);
 label{
   margin-top: 1%;
 }
+
+#theme-button{
+  text-align: center;
+  background: #555;
+  padding: 10px 15px;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  font-size: 1.2em;
+}

@@ -20,12 +20,14 @@
   /*reste de la page*/
   
   .titreTopic{
+    color: white;
     text-align: center;
     margin-top: 7%;
     margin-bottom: 2%;
   }
   
   .sous-titrePage{
+    color: white;
     text-align: center;
     margin-top: 2%;
     margin-bottom: 2%;
@@ -61,6 +63,7 @@
   }
   
   .content{
+    color: white;
     font-size: x-large;
     padding-top: 2%;
     padding-bottom: 4%;
@@ -113,3 +116,21 @@
     color: #fff;
     margin-top: 1%;
   }
+
+  div{
+    color: white;
+  }
+
+  h1 {
+    color: white;
+  }
+
+  #theme-button{
+    text-align: center;
+    background: #555;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.2em;
+}

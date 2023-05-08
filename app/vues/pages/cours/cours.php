@@ -103,7 +103,6 @@ if ($currentTheme === 'dark') {
         </main>
 
         <?php footer($stylePageFooter); ?>
-
         <script>
         function ToggleTheme() {
             var currentTheme = '<?php echo $currentTheme; ?>';
