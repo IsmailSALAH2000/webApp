@@ -9,7 +9,7 @@ include '../../../controllers/Forum/ForumController.php';
 <html lang="fr">
 
     <head>
-        <?php head('Forum', '../../pages/forum/topicview.css');?>
+        <?php head('Forum', '/webApp/app/vues/pages/forum/topicview.css');?>
     </head>
 
     <body>
