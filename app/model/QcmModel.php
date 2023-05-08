@@ -1,4 +1,5 @@
 <?php
+require_once 'Model.php';
 class QcmModel {
   use Model;
 
