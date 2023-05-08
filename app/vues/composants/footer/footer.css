@@ -4,3 +4,6 @@ footer{
     background: linear-gradient(to left, rgb(224, 214, 174), rgb(232, 161, 54));
     padding: 20px;
 }
+#copyright{
+    color: white;
+}
