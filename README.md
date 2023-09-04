@@ -2,7 +2,7 @@
 
 This project was developed as part of our university coursework, undertaken as a group assignment. It's an e-learning platform designed to facilitate online education. We primarily used HTML, CSS, JavaScript, and PHP (employing the MVC design pattern) to build this web application.
 
-![1624633301932_p2c2-1](https://github.com/IsmailSALAH2000/webApp/assets/116093616/477f2eee-33df-410a-a140-e6ea9d5aacda)
+![MVCFramework1-660x473](https://github.com/IsmailSALAH2000/webApp/assets/116093616/ca3c8fd1-ed65-43d3-977f-53101ad91e1a)
 
 # Objectives
 
