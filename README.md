@@ -20,3 +20,6 @@ Our site aims to provide the following features:
 # My Role in the Project
 
 In this project, my primary role was to focus on backend development, specifically on the interface with the database and the management of models in the MVC pattern. I worked on creating, updating, and deleting data, as well as managing information related to courses, teachers, and students.
+
+# Technical Details
+For in-depth technical information about the architecture and solutions implemented, please refer to the attached report titled "Compte_rendu_daw_G2.pdf" (in French).
