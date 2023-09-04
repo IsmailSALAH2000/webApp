@@ -1,6 +1,7 @@
 # E-learning Project - Online Learning Platform
 
 This project was developed as part of our university coursework, undertaken as a group assignment. It's an e-learning platform designed to facilitate online education. We primarily used HTML, CSS, JavaScript, and PHP (employing the MVC design pattern) to build this web application.
+
 ![1624633301932_p2c2-1](https://github.com/IsmailSALAH2000/webApp/assets/116093616/477f2eee-33df-410a-a140-e6ea9d5aacda)
 
 # Objectives
